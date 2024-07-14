@@ -4,7 +4,8 @@ declare -A FILES=(
     ["zsh/.zshrc"]="$HOME/.zshrc"
     ["zsh/.zshrc_aliases"]="$HOME/.zshrc_aliases"
     [".gitconfig"]="$HOME/.gitconfig"
-    ["hypr"]="$HOME/.config/hypr"
+    [".config/hypr"]="$HOME/.config/hypr"
+    [".config/neofetch"]="$HOME/.config/neofetch"
 )
 
 echo "CREATING SYMBOLIC LINKS"
