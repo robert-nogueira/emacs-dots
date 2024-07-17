@@ -1,11 +1,13 @@
 #!/bin/bash
 
+USER_HOME=$(eval echo ~$SUDO_USER)
+
 declare -A FILES=(
-    ["zsh/.zshrc"]="$HOME/.zshrc"
-    ["zsh/.zshrc_aliases"]="$HOME/.zshrc_aliases"
-    [".gitconfig"]="$HOME/.gitconfig"
-    [".config/hypr"]="$HOME/.config/hypr"
-    [".config/neofetch"]="$HOME/.config/neofetch"
+    ["zsh/.zshrc"]="$USER_HOME/.zshrc"
+    ["zsh/.zshrc_aliases"]="$USER_HOME/.zshrc_aliases"
+    [".gitconfig"]="$USER_HOME/.gitconfig"
+    [".config/hypr"]="$USER_HOME/.config/hypr"
+    [".config/neofetch"]="$USER_HOME/.config/neofetch"
 )
 
 echo "CREATING SYMBOLIC LINKS"
@@ -22,10 +24,10 @@ for key in "${!FILES[@]}";
     done
 
 
-if [ ! -d "$HOME/.pyenv" ]; then
+if [ ! -d "$USER_HOME/.pyenv" ]; then
     echo "INSTALL PYENV"
     curl https://pyenv.run | bash
-    export PYENV_ROOT="$HOME/.pyenv"
+    export PYENV_ROOT="$USER_HOME/.pyenv"
     [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
