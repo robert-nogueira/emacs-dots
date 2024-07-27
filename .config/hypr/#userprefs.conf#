@@ -19,8 +19,8 @@ general {
 }
 
 decoration {
-    inactive_opacity = .9
-    active_opacity = .9
+    inactive_opacity = .99
+    active_opacity = .8
     rounding = 5
     fullscreen_opacity = 1
 
