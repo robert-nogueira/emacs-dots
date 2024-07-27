@@ -21,6 +21,7 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 alias t='task'
 alias em='emacs --no-window-system'
+alias run-setup='~/.dotfiles/scripts/setup.sh'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
