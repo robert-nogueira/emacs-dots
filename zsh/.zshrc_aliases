@@ -26,6 +26,7 @@ alias sp='spotify-launcher'
 alias pipes='pipes.sh'
 alias files='dolphin'
 alias disc='vesktop'
+alias pshell='poetry shell'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
