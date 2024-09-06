@@ -27,6 +27,9 @@ alias pipes='pipes.sh'
 alias files='dolphin'
 alias disc='vesktop'
 alias pshell='poetry shell'
+alias fix-poetry="poetry env use $(poetry run --quiet -- bash -c 'readlink -f $(which python)')"
+alias py='python'
+alias waybar='waybar -c ~/.dotfiles/waybar/config/config.jsonc & ~/.dotfiles/waybar/config/style.css'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
