@@ -1,8 +1,0 @@
-killall waybar
-
-if [[ $USER = "robert" ]]
-then
-    waybar -c ~/.dotfiles/waybar/config & ~/.dotfiles/waybar/style.css
-else
-    waybar &
-fi
