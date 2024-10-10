@@ -96,7 +96,7 @@
 ;;; Discord Rich Presence
 (use-package elcord :ensure t)
 (elcord-mode)
-(setq elcord-idle-timer 1)
+(setq elcord-idle-timer 5)
 (setq elcord-idle-message "Tomando uma brejinha...")
 
 ;;; Web development
