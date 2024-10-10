@@ -70,3 +70,5 @@ echo "I use arch linux btw 🤓"
 
 # Created by `pipx` on 2024-07-13 22:55:49
 export PATH="$PATH:/home/robert/.local/bin"
+
+export PATH=$PATH:/home/robert/.spicetify
