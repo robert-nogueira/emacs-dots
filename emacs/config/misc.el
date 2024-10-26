@@ -6,6 +6,22 @@
 
 ;;; Code:
 
+(defun load-env-file (filepath)
+  "Load .env and define in Emacs environment from FILEPATH."
+  (when (file-exists-p filepath)
+    (with-temp-buffer
+      (insert-file-contents filepath)
+      (dolist (line (split-string (buffer-string) "\n" t))
+        (let ((parts (split-string line "=")))
+          (when (= (length parts) 2)
+            (setenv (car parts) (cadr parts))))))))
+
+(load-env-file "~/.emacs.d/.env")
+
+(message "Spotify Client ID: %s" (getenv "SPOTIFY_CLIENT_ID"))
+(message "Spotify Client Secret: %s" (getenv "SPOTIFY_CLIENT_SECRET"))
+
+
 (use-package try
   :ensure t)
 
@@ -28,8 +44,8 @@
 (use-package counsel-spotify
   :ensure t
   :config
-  (setq counsel-spotify-client-id "3660c85228374f47a0df42a32b8d730b")
-    (setq counsel-spotify-client-secret "f3e5b2d0cef341d9b36819d996060653"))
+  (setq counsel-spotify-client-id (getenv "SPOTIFY_CLIENT_ID"))
+  (setq counsel-spotify-client-secret (getenv "SPOTIFY_CLIENT_SECRET")))
 
 (use-package yasnippet
   :ensure t
