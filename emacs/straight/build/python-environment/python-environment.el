@@ -1,1 +1,0 @@
-/home/robert/.emacs.d/straight/repos/emacs-python-environment/python-environment.el

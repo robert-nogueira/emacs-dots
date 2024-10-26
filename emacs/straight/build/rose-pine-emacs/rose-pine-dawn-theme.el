@@ -1,1 +1,0 @@
-/home/robert/.emacs.d/straight/repos/rose-pine-emacs/rose-pine-dawn-theme.el
