@@ -1,1 +1,0 @@
-/home/robert/.emacs.d/straight/repos/company-box/company-box-icons.el

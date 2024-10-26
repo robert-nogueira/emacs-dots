@@ -1,1 +1,0 @@
-/home/robert/.emacs.d/straight/repos/xclip/.github/PULL_REQUEST_TEMPLATE.md

@@ -1,1 +1,0 @@
-/home/robert/.emacs.d/straight/repos/flycheck-pycheckers/bin/pycheckers.py
