@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Discord Comand
+# key: dcommand
+# group: discordpy
+# --
+@app_commands.command(
+    name='$1',
+    description='$0',
+)
+async def $1(self, interaction: Interaction) -> None:
+    pass

@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: jediepcserver
+Version: 0.3.0
+Requires-Dist: jedi>=0.11.0
+Requires-Dist: epc>=0.0.4
+Requires-Dist: argparse
+Requires-Dist: setuptools

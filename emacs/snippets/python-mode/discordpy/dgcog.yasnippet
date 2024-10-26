@@ -1,0 +1,23 @@
+# -*- mode: snippet -*-
+# name: Discord Group Cog
+# key: dgcog
+# group: discordpy
+# expand-env: ((yas-indent-line 'fixed))
+# --
+from discord.ext import commands
+
+
+class $1(commands.GroupCog):
+    """description"""
+
+    def __init__(self, client: commands.Bot) -> None:
+        self.client = client
+        super().__init__()
+
+    # commands here
+    $0
+
+
+async def setup(client: commands.Bot) -> None:
+    """setups the cog"""
+    return await client.add_cog($1(client))
