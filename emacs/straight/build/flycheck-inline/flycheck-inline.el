@@ -1,0 +1,1 @@
+/home/robert/.emacs.d/straight/repos/flycheck-inline/flycheck-inline.el

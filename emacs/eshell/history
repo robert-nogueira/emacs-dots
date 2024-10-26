@@ -1,0 +1,17 @@
+poetry shell
+clear
+poetry shell
+exit
+echo oi
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+poetry shell
+exit
+task lint
+cowsay hello
