@@ -1,1 +1,0 @@
-/home/robert/.emacs.d/straight/repos/emacs-ctable/ctable.el
