@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: Discord View
+# key: dview
+# group: discordpy
+# --
+class ${1$(capitalize yas-text)}(discord.ui.View):
+
+    def __init__(self) -> None:
+        super().__init__(timeout=None)
