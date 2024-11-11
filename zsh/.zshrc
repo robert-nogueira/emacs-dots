@@ -58,7 +58,9 @@ function in {
 }
 
 source ~/.zshrc_aliases
-
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -72,3 +74,4 @@ echo "I use arch linux btw 🤓"
 export PATH="$PATH:/home/robert/.local/bin"
 
 export PATH=$PATH:/home/robert/.spicetify
+export PATH="$HOME/.cargo/bin:$PATH"
