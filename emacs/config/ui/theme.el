@@ -10,8 +10,7 @@
 ;;; Install theme from GitHub
 (straight-use-package
  '(rose-pine-emacs :host github :repo "thongpv87/rose-pine-emacs" :branch "master"))
-(load-theme 'rose-pine-moon t)
-
+(load-theme 'rebecca t)
 
 (provide 'theme)
 ;;; theme.el ends here

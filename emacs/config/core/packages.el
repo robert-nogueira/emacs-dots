@@ -41,5 +41,7 @@
   (auto-package-update-maybe)
   (auto-package-update-at-time "21:00"))
 
+;; (setq use-package-always-defer t)
+
 (provide 'packages)
 ;;; packages.el ends here
