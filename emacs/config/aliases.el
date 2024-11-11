@@ -12,7 +12,7 @@
 (defalias '/spotify-p 'counsel-spotify-previous)
 (defalias '/spotify-play 'counsel-spotify-play)
 (defalias '/spotify-play-pause 'counsel-spotify-toggle-play-pause)
-
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (provide 'aliases)
 ;;; aliases.el ends here

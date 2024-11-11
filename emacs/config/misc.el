@@ -71,5 +71,26 @@
 	vertico-next
 	vertico-insert))
 
+(use-package markdown-mode
+  :ensure t
+  :mode ("\\.md\\'" . markdown-mode)
+  :init
+  (setq markdown-command "pandoc")
+  (setq markdown-preview-stylesheets (list "~/.emacs.d/github-markdown-dark.css"))
+)
+
+(use-package markdown-preview-eww
+  :ensure t
+  :after markdown-mode)
+
+(use-package markdown-preview-mode
+  :ensure t)
+
+(use-package centered-cursor-mode
+  :ensure t
+  :init
+  (global-centered-cursor-mode 1)
+  )
+
 (provide 'misc)
 ;;; misc.el ends here

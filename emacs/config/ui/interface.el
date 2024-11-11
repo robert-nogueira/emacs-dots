@@ -18,7 +18,7 @@
 (savehist-mode 1)
 (save-place-mode 1)
 (setq-default display-fill-column-indicator-column 79)
+(setq use-dialog-box nil)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
-
 (provide 'interface)
 ;;; interface.el ends here

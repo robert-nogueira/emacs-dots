@@ -5,7 +5,6 @@
 ;;; Code:
 
 (global-set-key "\M-h" 'help-for-help)
-(global-set-key [C-backspace] 'kill-whole-line)
 (global-set-key (kbd "C-q") 'other-window)
 (global-set-key (kbd "M-i") 'enlarge-window)
 (global-set-key (kbd "M-k") 'shrink-window)

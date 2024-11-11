@@ -12,7 +12,19 @@
       scroll-conservatively 10000)          ;; Scroll conservatively
 (setq inhibit-startup-message t)            ;; Disable the startup message
 (setq ring-bell-function 'ignore)
+
+;; no backup files
+(setq make-backup-files nil)
+
 (setq backup-directory-alist '((".*" . "~/.saves")))
+
+;; no lock files
+(setq create-lockfiles nil)
+
+;; automatically update the file if there are any changes
+(global-auto-revert-mode t)
+
+(setq-default truncate-lines t)
 
 ;;; settings.el ends here
 (provide 'settings)
