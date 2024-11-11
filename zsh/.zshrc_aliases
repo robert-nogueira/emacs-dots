@@ -21,19 +21,25 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 alias t='task'
 alias em='emacs'
-alias emnw='emacs --no-window-system'
+alias emnw='kitty --override window_padding_width=0 -e emacs -nw'
 alias sp='spotify-launcher'
 alias pipes='pipes.sh'
 alias files='dolphin'
 alias disc='vesktop'
-alias pshell='poetry shell'
 alias fix-poetry="poetry env use $(poetry run --quiet -- bash -c 'readlink -f $(which python)')"
 alias py='python'
 alias waybar='waybar -c ~/.dotfiles/waybar/config/config.jsonc & ~/.dotfiles/waybar/config/style.css'
+
+# Git aliases
 alias gcommit='git commit -m'
 alias gadd='git add'
 alias gpush='git push'
 alias gstats='git status'
+
+# poetry aliases
+alias pshell='poetry shell'
+alias pinstall='poetry install'
+alias pshow='poetry show'
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 alias mkdir='mkdir -p'
