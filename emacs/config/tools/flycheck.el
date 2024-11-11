@@ -8,19 +8,23 @@
 
 (use-package flycheck
   :ensure t
+  :after poetry
+;;  :demand t
   :init
   (global-flycheck-mode t)
   :config
   (flycheck-define-checker python-ruff
     "A Python syntax checker using Ruff."
-    :command ("poetry" "run" "task" "ruff-lint" source-inplace)
-    :error-patterns
+    :command ("ruff" "check" "--stdin-filename" source-original)
+  :standard-input t
+  :error-patterns
     ((error line-start (file-name) ":" line ":" (message) line-end))
     :modes python-mode)
 
   (flycheck-define-checker python-mypy
     "A Python type checker using MyPy."
-    :command ("poetry" "run" "task" "mypy-lint" source-original)
+    :command ("mypy" "--strict" "--show-error-codes" source-original)
+    :standard-input t
     :error-patterns
     ((warning line-start (file-name) ":" line ": " (message) line-end)
      (error line-start (file-name) ":" line ": error: " (message) line-end))
@@ -31,15 +35,18 @@
               (flycheck-select-checker 'python-ruff)
               (flycheck-add-next-checker 'python-ruff 'python-mypy))))
 
+(flycheck-def-config-file-var flycheck-python-ruff-config python-ruff
+                              '("pyproject.toml" "ruff.toml" ".ruff.toml"))
+
 (setq flycheck-checker-cache "~/.flycheck-cache")
 
 (use-package flycheck-inline
   :ensure t)
 
-(setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
+(setq flycheck-display-errors-function 'flycheck-display-error-messages-unless-error-list)
 
 (with-eval-after-load 'flycheck
-  (add-hook 'flycheck-mode-hook #'flycheck-inline-mode))
+  (add-hook 'flycheck-mode-hook 'flycheck-inline-mode))
 
 
 (provide 'flycheck)

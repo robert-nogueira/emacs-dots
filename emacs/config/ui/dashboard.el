@@ -16,6 +16,7 @@
 ;; Now configure dashboard after nerd-icons is loaded
 (use-package dashboard
   :ensure t
+  :demand t
   :custom
   (dashboard-setup-startup-hook)
   (dashboard-icon-type 'nerd-icons)
@@ -23,23 +24,26 @@
   (dashboard-set-file-icons t)
   (dashboard-center-content t)
   (dashboard-banner-logo-title "I use emacs btw 🤓☝️")
-  (dashboard-startup-banner "/home/robert/.emacs.d/config/ui/_.gif")
+  (dashboard-startup-banner '("/home/robert/.emacs.d/config/ui/3.gif"))
   (dashboard-footer-messages '("Strong coffee, strong code."))
     (dashboard-footer-icon
         (nerd-icons-mdicon "nf-md-coffee" :height 1.0 :v-adjust -0.05))
   (dashboard-items '((projects  . 5)
                      (recents . 5)))
 
-  (dashboard-startupify-list '(dashboard-insert-banner
-                                    dashboard-insert-newline
-                                    dashboard-insert-banner-title
-                                    dashboard-insert-newline
-                                    dashboard-insert-navigator
-                                    dashboard-insert-items
-                                    dashboard-insert-newline
-                                    dashboard-insert-footer
-                                    dashboard-insert-newline
-                                    dashboard-insert-init-info))
+  (dashboard-startupify-list '(
+			       dashboard-insert-newline
+                               dashboard-insert-newline
+			       dashboard-insert-banner
+                               dashboard-insert-newline
+                               dashboard-insert-banner-title
+                               dashboard-insert-newline
+                               dashboard-insert-navigator
+                               dashboard-insert-items
+                               dashboard-insert-newline
+                               dashboard-insert-footer
+                               dashboard-insert-newline
+                               dashboard-insert-init-info))
 
   (dashboard-navigator-buttons
         `(
@@ -55,6 +59,9 @@
 
   (set-face-attribute 'dashboard-banner-logo-title nil :height 180 :weight 'bold)
   (set-face-foreground 'dashboard-banner-logo-title "#cba6f7"))
+
+  (setq dashboard-image-banner-max-width 30)
+  (setq dashboard-image-banner-max-height 30)
 
 (provide 'dashboard)
 ;;; dashboard.el ends here
