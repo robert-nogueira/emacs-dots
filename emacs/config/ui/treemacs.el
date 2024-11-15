@@ -19,8 +19,8 @@
   (setq treemacs-is-never-other-window t)
   (setq treemacs-indentation 2)
   (setq treemacs-indentation-string " ")
-  (setq treemacs-filewatch-mode t)
-  (setq treemacs-git-mode 'deferred)
+  (treemacs-filewatch-mode t)
+  (treemacs-git-mode 'deferred)
   (setq treemacs-file-event-delay 0)
   (add-hook 'treemacs-mode-hook #'treemacs-project-follow-mode))
 
