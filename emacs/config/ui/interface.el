@@ -20,5 +20,12 @@
 (setq-default display-fill-column-indicator-column 79)
 (setq use-dialog-box nil)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+
+;;invisible cursor
+(setq x-pointer-shape x-pointer-invisible)
+(setq x-sensitive-text-pointer-shape x-pointer-invisible)
+(setq void-text-area-pointer 'text)
+(set-mouse-color (cdr (assoc 'mouse-color (frame-parameters))))
+
 (provide 'interface)
 ;;; interface.el ends here
