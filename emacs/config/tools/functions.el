@@ -6,16 +6,7 @@
 
 ;;; Code:
 
-(defun nshell ()
-  "Create a shell in another window vertically."
-  (interactive)
-  (let ((buf (shell)))
-    (switch-to-buffer (other-buffer buf))
-    (let ((win (split-window-below)))
-      (set-window-buffer win buf)
-      (select-window win))))
-
-(defun ruff-format-buffer ()
+(defun my/ruff-format-buffer ()
   "Format the buffer with ruff and restore the cursor position."
   (interactive)
   (let ((saved-point (point)))
@@ -30,13 +21,36 @@
             (message "Buffer formatted and saved with ruff!"))
         (message "Error formatting with ruff! Exit code: %d" exit-code)))))
 
-(defun setup-ruff-formatting ()
+(defun my/setup-ruff-formatting ()
   "Setup keybindings and hooks for Ruff formatting in Python mode."
   (local-set-key (kbd "C-M-l") 'ruff-format-buffer)
   (add-hook 'before-save-hook 'ruff-format-buffer nil t))
 
-(add-hook 'python-mode-hook 'setup-ruff-formatting)
+(defun my/delete-word (arg)
+  "Delete characters forward until encountering the end of a word.
+With argument, do this that many times.
+This command does not push text to `kill-ring'."
+  (interactive "p")
+  (delete-region
+   (point)
+   (progn
+     (forward-word arg)
+     (point))))
 
+(defun my/backward-delete-word (arg)
+  "Delete characters backward until encountering the beginning of a word.
+With argument, do this that many times.
+This command does not push text to `kill-ring'."
+  (interactive "p")
+  (my/delete-word (- arg)))
+
+(global-set-key (kbd "M-d") 'my/delete-word)
+(global-set-key (kbd "<M-backspace>") 'my/backward-delete-word)
+
+(global-set-key (kbd "C-d") 'my/delete-word)
+(global-set-key (kbd "<C-backspace>") 'my/backward-delete-word)
+
+(add-hook 'python-mode-hook 'my/setup-ruff-formatting)
 (global-set-key (kbd "M-;") 'comment-line)
 
 (provide 'functions)
