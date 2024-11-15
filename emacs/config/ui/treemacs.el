@@ -1,6 +1,6 @@
-;;; neotree.el --- Configuration for Neotree
+;;; treemacs.el --- Configuration for Treemacs
 ;;; Commentary:
-;; This file configures Neotree, a file and directory visualization tool
+;; This file configures Treemacs, a file and directory visualization tool
 ;; in Emacs.  It allows for easy navigation of your project's file structure.
 
 ;;; Code:
@@ -35,5 +35,5 @@
   '(treemacs-git-added-face ((t (:foreground "#94e2d5" :weight bold))))
   '(treemacs-git-untracked-face ((t (:foreground "#f38ba8" :weight bold)))))
 
-(provide 'neotree)
-;;; neotree.el ends here
+(provide 'treemacs)
+;;; treemacs.el ends here
