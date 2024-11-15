@@ -9,7 +9,7 @@
 (use-package flycheck
   :ensure t
   :after poetry
-;;  :demand t
+  :demand t
   :init
   (global-flycheck-mode t)
   :config
@@ -23,7 +23,9 @@
 
   (flycheck-define-checker python-mypy
     "A Python type checker using MyPy."
-    :command ("mypy" "--strict" "--show-error-codes" source-original)
+    :command ("mypy" "--strict" "--show-error-codes" "--cache-dir"
+              (eval (expand-file-name ".mypy_cache" (projectile-project-root)))
+              source-original)
     :standard-input t
     :error-patterns
     ((warning line-start (file-name) ":" line ": " (message) line-end)
@@ -48,6 +50,8 @@
 (with-eval-after-load 'flycheck
   (add-hook 'flycheck-mode-hook 'flycheck-inline-mode))
 
+(custom-set-faces
+ '(flycheck-fringe-error ((t (:background nil :foreground nil)))))
 
 (provide 'flycheck)
 ;;; flycheck.el ends here
