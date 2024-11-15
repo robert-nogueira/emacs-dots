@@ -14,9 +14,14 @@
   :config
 )
 
-;; diff-hl configuration
-(use-package diff-hl :demand t :ensure t)
-(global-diff-hl-mode)
+(use-package git-gutter
+  :ensure t
+  :config
+  (global-git-gutter-mode t))
+
+(setq git-gutter:added-sign "✨")
+(setq git-gutter:modified-sign "♻️")
+(setq git-gutter:deleted-sign "🔥")
 
 (provide 'vc)
 ;;; vc.el ends here
