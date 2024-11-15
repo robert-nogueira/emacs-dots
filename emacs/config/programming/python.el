@@ -6,23 +6,6 @@
 ;; and TOML mode.
 
 ;;; Code:
-
-;; (use-package jedi
-;;   :ensure t
-;;   :init
-;;   (add-hook 'python-mode-hook 'jedi:setup)
-;;   (add-hook 'python-mode-hook 'jedi:ac-setup)
-;;   :config
-;;   (setq jedi:use-shortcuts t
-;;          jedi:complete-on-dot t))
-
-;; (use-package lsp-mode
-;;   :ensure t
-;;   :hook (python-mode . lsp)
-;;   :config
-;; ;;  (setq lsp-pyright-python-executable-cmd "poetry run python")
-;;   (setq lsp-diagnostics-provider nil))
-
 (use-package poetry
   :straight t
   :demand 
