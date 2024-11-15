@@ -19,14 +19,14 @@
   (setq treemacs-is-never-other-window t)
   (setq treemacs-indentation 2)
   (setq treemacs-indentation-string " ")
-  (treemacs-filewatch-mode t)
-  (treemacs-git-mode 'deferred)
+  (setq treemacs-filewatch-mode t)
+  (setq treemacs-git-mode 'deferred)
   (setq treemacs-file-event-delay 0)
   (add-hook 'treemacs-mode-hook #'treemacs-project-follow-mode))
 
 
 (use-package treemacs-nerd-icons
-  :after treemacs
+  :after nerd-icons
   :config
   (treemacs-load-theme "nerd-icons"))
 
