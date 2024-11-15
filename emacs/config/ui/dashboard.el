@@ -28,7 +28,7 @@
   (dashboard-footer-messages '("Strong coffee, strong code."))
     (dashboard-footer-icon
         (nerd-icons-mdicon "nf-md-coffee" :height 1.0 :v-adjust -0.05))
-  (dashboard-items '((projects  . 5)
+  (dashboard-items '((projects  . 10)
                      (recents . 5)))
 
   (dashboard-startupify-list '(
@@ -59,7 +59,7 @@
 
   (set-face-attribute 'dashboard-banner-logo-title nil :height 180 :weight 'bold)
   (set-face-foreground 'dashboard-banner-logo-title "#cba6f7"))
-
+  (setq dashboard-projects-backend 'projectile)
   (setq dashboard-image-banner-max-width 30)
   (setq dashboard-image-banner-max-height 30)
 
