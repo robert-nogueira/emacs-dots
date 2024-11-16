@@ -92,5 +92,15 @@
   (global-centered-cursor-mode 1)
   )
 
+(use-package multiple-cursors
+  :ensure t
+  :bind (("C-k" . mc/mark-next-like-this)
+         ("C-i" . mc/mark-previous-like-this)
+         ("C-l" . mc/mark-all-like-this)
+         ("C-S-c C-S-c" . mc/edit-lines)))
+(use-package expand-region
+  :ensure t
+  :bind ("C-9" . er/expand-region))
+
 (provide 'misc)
 ;;; misc.el ends here
