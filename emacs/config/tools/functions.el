@@ -23,8 +23,8 @@
 
 (defun my/setup-ruff-formatting ()
   "Setup keybindings and hooks for Ruff formatting in Python mode."
-  (local-set-key (kbd "C-M-l") 'ruff-format-buffer)
-  (add-hook 'before-save-hook 'ruff-format-buffer nil t))
+  (local-set-key (kbd "C-M-l") 'my/ruff-format-buffer)
+  (add-hook 'before-save-hook 'my/ruff-format-buffer nil t))
 
 (defun my/delete-word (arg)
   "Delete characters forward until encountering the end of a word.
