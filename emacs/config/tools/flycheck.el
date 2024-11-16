@@ -51,7 +51,11 @@
   (add-hook 'flycheck-mode-hook 'flycheck-inline-mode))
 
 (custom-set-faces
- '(flycheck-fringe-error ((t (:background nil :foreground nil)))))
+ '(flycheck-fringe-error ((t (:background nil :foreground nil))))
+ '(flycheck-fringe-error ((t (:background nil :foreground nil))))
+ '(treemacs-git-added-face ((t (:foreground "#94e2d5" :weight bold))))
+ '(treemacs-git-modified-face ((t (:foreground "#cba6f7" :weight bold))))
+ '(treemacs-git-untracked-face ((t (:foreground "#f38ba8" :weight bold)))))
 
 (provide 'flycheck)
 ;;; flycheck.el ends here
