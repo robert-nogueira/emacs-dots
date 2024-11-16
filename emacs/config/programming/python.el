@@ -72,5 +72,11 @@
 (use-package toml-mode
   :ensure t)
 
+(use-package numpydoc
+  :ensure t
+  :bind
+  ("C-c d" . numpydoc-generate))
+
+
 (provide 'python)
 ;;; python.el ends here
