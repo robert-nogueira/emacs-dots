@@ -4,11 +4,6 @@
 
 ;;; Code:
 
-(use-package async
-  :ensure t
-  :config (dired-async-mode 1))
-
-
 (setq gc-cons-threshold most-positive-fixnum)
 (add-hook 'emacs-startup-hook
           (lambda () (setq gc-cons-threshold 800000)))
@@ -25,19 +20,11 @@
 (load (expand-file-name "core/settings" config-dir))
 
 ;; Load UI modules
-(use-package projectile
-  :ensure t
-  :config
-  (projectile-mode +1))
-(setq projectile-project-root-files '(".git" "pyproject.toml"))
-(setq projectile-project-search-path '("~/Documents/freelas" "~/Documents/my-projects" "~/Documents/squarecloud")) ;; Diretórios com seus projetos
-
 (load (expand-file-name "ui/dashboard" config-dir))
-(load (expand-file-name "ui/treemacs" config-dir))
+(load (expand-file-name "tools/treemacs" config-dir))
 (load (expand-file-name "ui/theme" config-dir))
 
 ;; Load programming modules
-(load (expand-file-name "tools/vc" config-dir))
 (load (expand-file-name "programming/python" config-dir))
 (load (expand-file-name "programming/web-dev" config-dir))
 
@@ -52,24 +39,13 @@
 (load (expand-file-name "tools/flycheck" config-dir))
 (load (expand-file-name "tools/functions" config-dir))
 (load (expand-file-name "tools/discord" config-dir))
+(load (expand-file-name "tools/vc" config-dir))
+(load (expand-file-name "tools/projectile" config-dir))
+(load (expand-file-name "tools/vterm" config-dir))
 
 ;; Load miscellaneous configurations
 (load (expand-file-name "misc" config-dir))
 (load (expand-file-name "aliases" config-dir))
-
-;; (use-package telephone-line
-;;   :ensure t)
-
-;; (telephone-line-mode t)
-
-;; ;; Cores da modeline usando o tema Catppuccin Mocha com roxo
-;; (set-face-background 'mode-line "#1E1E2E")         ; Cor de fundo ativa
-;; (set-face-foreground 'mode-line "#F5E0DC")         ; Cor do texto ativo
-;; (set-face-background 'mode-line-inactive "#26233A") ; Cor de fundo inativa
-;; (set-face-foreground 'mode-line-inactive "#C6C6D5") ; Cor do texto inativo
-;; (set-face-foreground 'mode-line '#DDB6F2)           ; Cor do texto ativo com tom de roxo
-
-(display-time-mode 1)
 
 ;;; init.el ends here
 ;; (set-frame-parameter nil 'alpha-background 90)
@@ -87,15 +63,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(use-package vterm
-  :config
-  (setq vterm-kill-buffer-on-exit t)
-  :ensure t)
-(global-set-key (kbd "C-c C-t") 'vterm)
-(add-hook 'vterm-mode-hook (lambda () (display-line-numbers-mode 0)))
-
-(use-package vterm-toggle
-  :ensure t
-  :bind (("M-<f12>" . vterm-toggle)
-         ("C-c j" . vterm-toggle-forward)
-         ("C-c l" . vterm-toggle-backward)))
