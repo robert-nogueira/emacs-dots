@@ -20,6 +20,7 @@
 (setq-default display-fill-column-indicator-column 79)
 (setq use-dialog-box nil)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+(display-time-mode 1)
 
 ;;invisible cursor
 (setq x-pointer-shape x-pointer-invisible)
