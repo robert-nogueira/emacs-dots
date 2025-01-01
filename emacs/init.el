@@ -42,7 +42,6 @@
 (load (expand-file-name "tools/vc" config-dir))
 (load (expand-file-name "tools/projectile" config-dir))
 (load (expand-file-name "tools/vterm" config-dir))
-(load (expand-file-name "tools/bookmarks" config-dir))
 
 ;; Load miscellaneous configurations
 (load (expand-file-name "misc" config-dir))
