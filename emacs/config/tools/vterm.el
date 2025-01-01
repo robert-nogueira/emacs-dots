@@ -14,7 +14,7 @@
 
 (use-package vterm-toggle
   :ensure t
-  :bind (("M-<f12>" . vterm-toggle)
+  :bind (("C-c t" . vterm-toggle)
          ("C-c j" . vterm-toggle-forward)
          ("C-c l" . vterm-toggle-backward)))
 

@@ -22,8 +22,12 @@
   (treemacs-filewatch-mode t)
   (treemacs-git-mode 'deferred)
   (setq treemacs-file-event-delay 0)
-  (add-hook 'treemacs-mode-hook #'treemacs-project-follow-mode))
-
+  (setq treemacs-deferred-git-apply-delay 0)
+  (setq treemacs-git-commit-diff-mode 1)
+  (with-eval-after-load 'treemacs
+    (defun treemacs-ignore-gitignore (file _)
+      (string= file "__pycache__"))
+    (push #'treemacs-ignore-gitignore treemacs-ignored-file-predicates))  (add-hook 'treemacs-mode-hook #'treemacs-project-follow-mode))
 
 (use-package treemacs-nerd-icons
   :after nerd-icons
