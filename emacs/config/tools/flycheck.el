@@ -15,7 +15,7 @@
   :config
   (flycheck-define-checker python-ruff
     "A Python syntax checker using Ruff."
-    :command ("ruff" "check" "--stdin-filename" source-original)
+    :command ("ruff" "--quiet" "check" "--stdin-filename" source-original)
   :standard-input t
   :error-patterns
     ((error line-start (file-name) ":" line ":" (message) line-end))
@@ -46,11 +46,15 @@
   :ensure t)
 
 (setq flycheck-display-errors-function 'flycheck-display-error-messages-unless-error-list)
+(setq flycheck-checker-error-threshold 1000)
 
 (with-eval-after-load 'flycheck
   (add-hook 'flycheck-mode-hook 'flycheck-inline-mode))
 
 (custom-set-faces
+ '(flycheck-error ((t (:underline (:color "#cba6f7" :style line)))))
+ '(flycheck-warning ((t (:underline (:color "#89b4fa" :style line)))))
+ '(flycheck-info ((t (:underline (:color "#00ff00" :style wave)))))
  '(flycheck-fringe-error ((t (:background nil :foreground nil))))
  '(flycheck-fringe-error ((t (:background nil :foreground nil))))
  '(treemacs-git-added-face ((t (:foreground "#94e2d5" :weight bold))))
