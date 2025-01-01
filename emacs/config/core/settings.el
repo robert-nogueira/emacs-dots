@@ -20,6 +20,8 @@
 (setq backup-directory-alist '((".*" . "~/.saves")))
 (global-auto-revert-mode t)
 (setq-default truncate-lines t)
+(add-hook 'prog-mode-hook 'hs-minor-mode)
+(setq redisplay-dont-pause t)
 
 ;;; settings.el ends here
 (provide 'settings)

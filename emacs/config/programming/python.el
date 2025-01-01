@@ -77,6 +77,8 @@
   :bind
   ("C-c d" . numpydoc-generate))
 
+(with-eval-after-load 'lsp-mode
+  (define-key lsp-mode-map (kbd "C-c r") #'lsp-rename))
 
 (provide 'python)
 ;;; python.el ends here
