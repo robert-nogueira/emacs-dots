@@ -1,30 +1,36 @@
 ;;; flycheck.el --- Flycheck Configuration for Python
 ;;; Commentary:
 
-;; This file configures Flycheck to use Ruff and Mypy as checkers for Python files.
-;; It also sets up a cache for Flycheck.
+;; Configure Flycheck with Ruff and Mypy, ensuring error display works immediately.
 
 ;;; Code:
 
 (use-package flycheck
   :ensure t
-  :after poetry
-  :demand t
+  ;; :after poetry
+  ;; :demand t
   :init
-  (global-flycheck-mode t)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled idle-change))
+  (setq flycheck-idle-change-delay 0)
   :config
+  (global-flycheck-mode t)
+
+  ;; Define Ruff checker
   (flycheck-define-checker python-ruff
     "A Python syntax checker using Ruff."
-    :command ("ruff" "--quiet" "check" "--stdin-filename" source-original)
-  :standard-input t
-  :error-patterns
+    :command ("ruff" "--quiet" "check" "--stdin-filename" source-inplace)
+    :standard-input t
+    :error-patterns
     ((error line-start (file-name) ":" line ":" (message) line-end))
     :modes python-mode)
 
+  ;; Define MyPy checker
   (flycheck-define-checker python-mypy
     "A Python type checker using MyPy."
     :command ("mypy" "--strict" "--show-error-codes" "--cache-dir"
               (eval (expand-file-name ".mypy_cache" (projectile-project-root)))
+              "--config-file"
+              (eval (expand-file-name "pyproject.toml" (projectile-project-root)))
               source-original)
     :standard-input t
     :error-patterns
@@ -32,34 +38,33 @@
      (error line-start (file-name) ":" line ": error: " (message) line-end))
     :modes python-mode)
 
+  ;; Hook para selecionar os checkers
   (add-hook 'python-mode-hook
             (lambda ()
               (flycheck-select-checker 'python-ruff)
               (flycheck-add-next-checker 'python-ruff 'python-mypy))))
 
-(flycheck-def-config-file-var flycheck-python-ruff-config python-ruff
-                              '("pyproject.toml" "ruff.toml" ".ruff.toml"))
+
+(use-package flycheck-inline
+  :ensure t
+  :after flycheck
+  :config
+  (add-hook 'flycheck-mode-hook 'flycheck-inline-mode))
 
 (setq flycheck-checker-cache "~/.flycheck-cache")
 
-(use-package flycheck-inline
-  :ensure t)
+(setq flycheck-indication-mode nil)
 
-(setq flycheck-display-errors-function 'flycheck-display-error-messages-unless-error-list)
-(setq flycheck-checker-error-threshold 1000)
-
-(with-eval-after-load 'flycheck
-  (add-hook 'flycheck-mode-hook 'flycheck-inline-mode))
+(add-hook 'python-mode-hook #'flycheck-mode)
+;; (add-hook 'poetry-after-pipenv-activate-hook
+;;           (lambda ()
+;;             (when (derived-mode-p 'python-mode)
+;;               (flycheck-buffer))))  ;; Força o Flycheck a verificar após o Poetry concluir
 
 (custom-set-faces
  '(flycheck-error ((t (:underline (:color "#cba6f7" :style line)))))
  '(flycheck-warning ((t (:underline (:color "#89b4fa" :style line)))))
- '(flycheck-info ((t (:underline (:color "#00ff00" :style wave)))))
- '(flycheck-fringe-error ((t (:background nil :foreground nil))))
- '(flycheck-fringe-error ((t (:background nil :foreground nil))))
- '(treemacs-git-added-face ((t (:foreground "#94e2d5" :weight bold))))
- '(treemacs-git-modified-face ((t (:foreground "#cba6f7" :weight bold))))
- '(treemacs-git-untracked-face ((t (:foreground "#f38ba8" :weight bold)))))
+ '(flycheck-info ((t (:underline (:color "#00ff00" :style wave))))))
 
 (provide 'flycheck)
 ;;; flycheck.el ends here

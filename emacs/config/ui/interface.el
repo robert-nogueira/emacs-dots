@@ -23,10 +23,10 @@
 (display-time-mode 1)
 
 ;;invisible cursor
-(setq x-pointer-shape x-pointer-invisible)
-(setq x-sensitive-text-pointer-shape x-pointer-invisible)
-(setq void-text-area-pointer 'text)
-(set-mouse-color (cdr (assoc 'mouse-color (frame-parameters))))
+;; (setq x-pointer-shape x-pointer-invisible)
+;; (setq x-sensitive-text-pointer-shape x-pointer-invisible)
+;; (setq void-text-area-pointer 'text)
+;; (set-mouse-color (cdr (assoc 'mouse-color (frame-parameters))))
 
 (provide 'interface)
 ;;; interface.el ends here

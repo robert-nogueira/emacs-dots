@@ -65,6 +65,7 @@ eval "$(pyenv init -)"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PACMAN_CONFIG=/home/.dotfiles/pacman/pacman.conf
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
 #Display neofetch
 neofetch
@@ -72,6 +73,5 @@ echo "I use arch linux btw 🤓"
 
 # Created by `pipx` on 2024-07-13 22:55:49
 export PATH="$PATH:/home/robert/.local/bin"
-
 export PATH=$PATH:/home/robert/.spicetify
 export PATH="$HOME/.cargo/bin:$PATH"
