@@ -7,11 +7,22 @@
 
 ;;; Code:
 
+(require 'cl-lib)
+
 ;; Ensure nerd-icons is loaded before configuring dashboard
 (use-package nerd-icons
   :ensure t
   :config
   (setq nerd-icons-font-family "Symbols Nerd Font Mono"))
+
+(defun select-random-banner ()
+  "Select a random banner from the banners directory."
+  (let* ((banners-dir "~/.emacs.d/config/ui/banners/")
+         (files (directory-files banners-dir t "^[^.]")))
+    (when files
+      (let ((selected (nth (random (length files)) files)))
+        (message "Dashboard banner selected: %s" selected)
+        selected))))
 
 ;; Now configure dashboard after nerd-icons is loaded
 (use-package dashboard
@@ -24,18 +35,17 @@
   (dashboard-set-file-icons t)
   (dashboard-center-content t)
   (dashboard-banner-logo-title "I use emacs btw 🤓☝️")
- (dashboard-startup-banner '("/home/robert/.emacs.d/config/ui/3.gif"))
-  ;; (dashboard-startup-banner 'logo)
+  (dashboard-startup-banner (select-random-banner))
+ ;; (dashboard-startup-banner '("/home/robert/.emacs.d/config/ui/banners/a.txt"))
   (dashboard-footer-messages '("Strong coffee, strong code."))
-    (dashboard-footer-icon
-        (nerd-icons-mdicon "nf-md-coffee" :height 1.0 :v-adjust -0.05))
+  (dashboard-footer-icon
+   (nerd-icons-mdicon "nf-md-coffee" :height 1.0 :v-adjust -0.05))
   (dashboard-items '((projects  . 10)
                      (recents . 5)))
-
   (dashboard-startupify-list '(
-			       dashboard-insert-newline
                                dashboard-insert-newline
-			       dashboard-insert-banner
+                               dashboard-insert-newline
+                               dashboard-insert-banner
                                dashboard-insert-newline
                                dashboard-insert-banner-title
                                dashboard-insert-newline
@@ -45,24 +55,20 @@
                                dashboard-insert-footer
                                dashboard-insert-newline
                                dashboard-insert-init-info))
-
   (dashboard-navigator-buttons
-        `(
-          ((,(nerd-icons-mdicon "nf-md-github" :height 1.1 :v-adjust 0.0)
-             "Github" "Browse GitHub profile"
-             (lambda (&rest _) (browse-url "https://github.com/Robert-Nogueira")))
-
-           (,(nerd-icons-mdicon "nf-md-cog" :height 1.1 :v-adjust 0.0)
-            "Settings" "Open init.el"
-            (lambda (&rest _) (find-file user-init-file))))))
+   `(
+     ((,(nerd-icons-mdicon "nf-md-github" :height 1.1 :v-adjust 0.0)
+       "Github" "Browse GitHub profile"
+       (lambda (&rest _) (browse-url "https://github.com/Robert-Nogueira")))
+      (,(nerd-icons-mdicon "nf-md-cog" :height 1.1 :v-adjust 0.0)
+       "Settings" "Open init.el"
+       (lambda (&rest _) (find-file user-init-file))))))
   :config
   (dashboard-setup-startup-hook)
-
   (set-face-attribute 'dashboard-banner-logo-title nil :height 180 :weight 'bold)
   (set-face-foreground 'dashboard-banner-logo-title "#cba6f7"))
-  (setq dashboard-projects-backend 'projectile)
-  ;; (setq dashboard-image-banner-max-width 30)
-  ;; (setq dashboard-image-banner-max-height 30)
+
+(setq dashboard-projects-backend 'projectile)
 
 (provide 'dashboard)
 ;;; dashboard.el ends here
