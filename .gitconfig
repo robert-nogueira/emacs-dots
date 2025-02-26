@@ -9,3 +9,5 @@
 	helper = !/usr/bin/gh auth git-credential
 [core]
 	autocrlf = input
+[init]
+	defaultBranch = master

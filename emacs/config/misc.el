@@ -18,8 +18,6 @@
 
 (load-env-file "~/.emacs.d/.env")
 
-(message "Spotify Client ID: %s" (getenv "SPOTIFY_CLIENT_ID"))
-(message "Spotify Client Secret: %s" (getenv "SPOTIFY_CLIENT_SECRET"))
 
 
 (use-package try

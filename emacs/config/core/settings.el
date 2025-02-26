@@ -13,7 +13,7 @@
 (setq inhibit-startup-message t)
 (setq ring-bell-function 'ignore)
 (setq save-interprogram-paste-before-kill nil)
-
+;; (setq inhibit-startup-echo-area-message t)
 
 (setq make-backup-files nil)
 (setq create-lockfiles nil)

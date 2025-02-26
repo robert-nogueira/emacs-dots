@@ -11,7 +11,7 @@
   :config
   (setq treemacs-hide-gitignored-files-mode t)
   (setq treemacs-project-follow-cleanup t)
-  (setq treemacs-width 35)
+  (setq treemacs-width 45)
   (setq treemacs-width-is-initially-locked nil)
   (setq delete-by-moving-to-trash t)
   (setq treemacs-collapse-dirs 3)
@@ -34,10 +34,10 @@
   :config
   (treemacs-load-theme "nerd-icons"))
 
-(custom-set-faces
-  '(treemacs-git-modified-face ((t (:foreground "#cba6f7" :weight bold))))
-  '(treemacs-git-added-face ((t (:foreground "#94e2d5" :weight bold))))
-  '(treemacs-git-untracked-face ((t (:foreground "#f38ba8" :weight bold)))))
+;; (custom-set-faces
+;;   '(treemacs-git-modified-face ((t (:foreground "#94e2d5" :weight bold))))
+;;   '(treemacs-git-added-face ((t (:foreground "#cba6f7" :weight bold))))
+;;   '(treemacs-git-untracked-face ((t (:foreground "#f38ba8" :weight bold)))))
 
 (provide 'treemacs)
 ;;; treemacs.el ends here

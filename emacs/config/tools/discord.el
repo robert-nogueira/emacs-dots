@@ -9,9 +9,9 @@
 (use-package elcord
   :ensure t
   :config
-  (elcord-mode))
-  ;; (setq elcord-idle-timer 5)
-  ;; (setq elcord-idle-message "Tomando uma brejinha..."))
+  (elcord-mode)
+  (setq elcord-idle-timer 600)
+  (setq elcord-idle-message "Tomando uma brejinha..."))
 
 (provide 'elcord)
 ;;; discord.el ends here

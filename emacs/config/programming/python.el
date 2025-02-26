@@ -8,20 +8,21 @@
 ;;; Code:
 (use-package poetry
   :straight t
-  :demand 
+  :ensure t
+  ;; :demand t
   :config
   (poetry-tracking-mode)
   )
 
 (use-package python
   :mode "python-mode"
-  :after (poetry)
+  ;; :after poetry
   :hook
-  (python-mode . (lambda () 
+  (python-mode . (lambda ()
                    (when (poetry-venv-exist-p)
                      (lsp-deferred))
   :config
-  (setq python-indent-guess-indent-offset nil))))
+  (setq python-indent-guess-indent-offset 4))))
 
 (use-package lsp-mode
   :ensure t
@@ -43,7 +44,7 @@
                     (require 'lsp-pyright)
                     (lsp-deferred)))))
 
-(setq lsp-auto-guess-root t)
+(advice-add 'lsp--info :around (lambda (&rest _) nil))
 
 
 (use-package lsp-ui
@@ -57,10 +58,10 @@
         lsp-ui-sideline-enable t
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-flycheck-enable t
-        lsp-ui-flycheck-check-mode 'project
+        ;; lsp-ui-flycheck-check-mode 'project
         lsp-ui-sideline-show-symbol t
         lsp-ui-sideline-show-hover t
-	lsp-ui-doc-delay 0.5
+	lsp-ui-doc-delay 0.3
         lsp-ui-doc-max-width 80
         lsp-ui-doc-max-height 20)
  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
@@ -79,6 +80,5 @@
 
 (with-eval-after-load 'lsp-mode
   (define-key lsp-mode-map (kbd "C-c r") #'lsp-rename))
-
 (provide 'python)
 ;;; python.el ends here
