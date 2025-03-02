@@ -24,12 +24,12 @@
 (defun my/setup-ruff-formatting ()
   "Setup keybindings and hooks for Ruff formatting in Python mode."
   (local-set-key (kbd "C-M-l") 'my/ruff-format-buffer)
-  (add-hook 'before-save-hook 'my/ruff-format-buffer nil t))
+  (add-hook 'before-save-hook 'my/ruff-format-buffer))
 
 (defun my/delete-word (arg)
   "Delete characters forward until encountering the end of a word.
 With argument, do this that many times.
-This command does not push text to `kill-ring'."
+This command does not push text to kill-ring'."
   (interactive "p")
   (delete-region
    (point)
@@ -40,7 +40,7 @@ This command does not push text to `kill-ring'."
 (defun my/backward-delete-word (arg)
   "Delete characters backward until encountering the beginning of a word.
 With argument, do this that many times.
-This command does not push text to `kill-ring'."
+This command does not push text to kill-ring'."
   (interactive "p")
   (my/delete-word (- arg)))
 
@@ -51,6 +51,8 @@ This command does not push text to `kill-ring'."
 (global-set-key (kbd "<C-backspace>") 'my/backward-delete-word)
 
 (add-hook 'python-mode-hook 'my/setup-ruff-formatting)
+(global-set-key (kbd "C-M-l") 'my/ruff-format-buffer)
+(add-hook 'before-save-hook 'my/ruff-format-buffer)
 (global-set-key (kbd "M-;") 'comment-line)
 
 (provide 'functions)
