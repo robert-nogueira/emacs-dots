@@ -77,6 +77,8 @@
   :ensure t
   :bind
   ("C-c d" . numpydoc-generate))
+(add-hook 'python-mode-hook #'font-lock-mode)
+
 
 (with-eval-after-load 'lsp-mode
   (define-key lsp-mode-map (kbd "C-c r") #'lsp-rename))
