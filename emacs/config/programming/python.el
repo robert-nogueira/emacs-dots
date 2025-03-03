@@ -20,9 +20,10 @@
   :hook
   (python-mode . (lambda ()
                    (when (poetry-venv-exist-p)
-                     (lsp-deferred))
+                     (message "poetry-venv-exist-p: %s" (symbol-value 'poetry-venv-exist-p))
+                     (lsp-deferred))))
   :config
-  (setq python-indent-guess-indent-offset 4))))
+  (setq python-indent-guess-indent-offset 4))
 
 (use-package lsp-mode
   :ensure t
@@ -46,29 +47,31 @@
 
 (advice-add 'lsp--info :around (lambda (&rest _) nil))
 
-
 (use-package lsp-ui
   :after lsp-mode
   :config
   (setq lsp-ui-doc-enable t
         lsp-ui-doc-include-signature t
         lsp-ui-doc-position 'top
-	lsp-ui-doc-show-with-cursor t
+        lsp-ui-doc-side 'right
+        lsp-ui-doc-show-with-cursor t
+        lsp-ui-doc-use-childframe t
         lsp-ui-peek-enable t
         lsp-ui-sideline-enable t
         lsp-ui-sideline-ignore-duplicate t
         lsp-ui-flycheck-enable t
-        ;; lsp-ui-flycheck-check-mode 'project
-        lsp-ui-sideline-show-symbol t
-        lsp-ui-sideline-show-hover t
-	lsp-ui-doc-delay 0.3
-        lsp-ui-doc-max-width 80
-        lsp-ui-doc-max-height 20)
- (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
- (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+        lsp-ui-flycheck-check-mode 'project
+        lsp-ui-sideline-show-symbol nil
+        lsp-ui-sideline-show-hover nil
+        lsp-ui-doc-delay 0
+        ;; lsp-ui-doc-max-width 200
+        lsp-ui-doc-max-height 70
+        lsp-ui-doc-border "#cba6f7")  ;; Cor da borda
+
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
   (global-set-key (kbd "C-c C-d") 'lsp-ui-doc-show))
 
-(setq lsp-ui-doc-enable nil)
 
 (use-package toml-mode
   :ensure t)
