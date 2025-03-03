@@ -30,6 +30,9 @@
 (load (expand-file-name "completion/vertico" config-dir))
 (load (expand-file-name "completion/marginalia" config-dir))
 (load (expand-file-name "completion/orderless" config-dir))
+;; Load programming modules
+(load (expand-file-name "programming/python" config-dir))
+(load (expand-file-name "programming/web-dev" config-dir))
 
 ;; ;; Load tool modules
 (load (expand-file-name "tools/centaur-tabs" config-dir))
@@ -39,9 +42,6 @@
 (load (expand-file-name "tools/vc" config-dir))
 (load (expand-file-name "tools/projectile" config-dir))
 (load (expand-file-name "tools/vterm" config-dir))
-;; Load programming modules
-(load (expand-file-name "programming/python" config-dir))
-(load (expand-file-name "programming/web-dev" config-dir))
 
 ;; Load miscellaneous configurations
 (load (expand-file-name "misc" config-dir))

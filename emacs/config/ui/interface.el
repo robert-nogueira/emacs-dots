@@ -21,6 +21,7 @@
 (setq use-dialog-box nil)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 (display-time-mode 1)
+(set-face-attribute 'default nil :height 120)
 
 ;;invisible cursor
 ;; (setq x-pointer-shape x-pointer-invisible)
