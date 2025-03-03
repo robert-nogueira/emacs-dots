@@ -1,0 +1,17 @@
+# Emacs temporary files
+*~
+\#*\#
+.\#*
+
+# Emacs auto-save files
+*.swp
+*.swo
+
+emacs/*
+!emacs/config
+!emacs/snippets
+!emacs/init.el
+
+.env
+*.gif
+hypr/themes/colors.conf
