@@ -27,7 +27,7 @@
   ;; Define MyPy checker
   (flycheck-define-checker python-mypy
     "A Python type checker using MyPy."
-    :command ("mypy" "--strict" "--show-error-codes" "--cache-dir"
+    :command ("mypy" "--show-error-codes" "--cache-dir"
               (eval (expand-file-name ".mypy_cache" (projectile-project-root)))
               "--config-file"
               (eval (expand-file-name "pyproject.toml" (projectile-project-root)))
