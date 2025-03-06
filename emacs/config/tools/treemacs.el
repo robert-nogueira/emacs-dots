@@ -33,7 +33,7 @@
   :after nerd-icons
   :config
   (treemacs-load-theme "nerd-icons"))
-
+(add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
 ;; (custom-set-faces
 ;;   '(treemacs-git-modified-face ((t (:foreground "#94e2d5" :weight bold))))
 ;;   '(treemacs-git-added-face ((t (:foreground "#cba6f7" :weight bold))))
