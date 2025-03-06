@@ -10,7 +10,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (setq-default cursor-type 'bar)
-(global-display-line-numbers-mode 1)
+(global-display-line-numbers-mode t)
 (setq select-enable-clipboard t)
 (global-hl-line-mode 1)
 (delete-selection-mode t)
@@ -22,6 +22,13 @@
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 (display-time-mode 1)
 (set-face-attribute 'default nil :height 120)
+(custom-set-faces
+ '(line-number ((t (:foreground "#cba6f7"))))
+ '(line-number-current-line ((t (:foreground "#b4befe" :weight bold))))
+ '(fill-column-indicator ((t (:foreground "#cba6f7" :style dotted))))
+)
+(setq display-line-numbers-type 'relative)
+(setq-default right-fringe 10)  ; Aumenta o espaço à direita
 
 ;;invisible cursor
 ;; (setq x-pointer-shape x-pointer-invisible)
