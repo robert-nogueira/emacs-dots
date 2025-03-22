@@ -4,19 +4,14 @@
 
 ;;; Code:
 
-;; (use-package catppuccin-theme :ensure t)
-;; (use-package ef-themes
-;;  :ensure t)			 ;
 ;; (load-theme 'ef-cherie t)
+;; (load-theme 'ef-rosa t)
+;; (load-theme 'ef-night t)
+;; (load-theme 'ef-trio-dark t)
+;; (load-theme 'ef-deuteranopia-dark t) ;; cyberpunk
 ;; (load-theme 'doom-laserwave t)
-;; (use-package autothemer :ensure t)
-
-;; (straight-use-package
-;;  '(rose-pine-emacs
-;;    :host github
-;;    :repo "thongpv87/rose-pine-emacs"
-;;    :branch "master"))
-;; (load-theme 'rose-pine-color t)
+;; (load-theme 'doom-outrun-electric t)
+;; (load-theme 'doom-shades-of-purple t)
 (load-theme 'doom-moonlight t)
-(provide 'theme)
+;; (use-package autothemer :ensure t)
 ;;; theme.el ends here
