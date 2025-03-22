@@ -66,7 +66,8 @@ eval "$(pyenv init -)"
 
 export PACMAN_CONFIG=/home/.dotfiles/pacman/pacman.conf
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
-
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
 #Display neofetch
 neofetch
 echo "I use arch linux btw 🤓"
