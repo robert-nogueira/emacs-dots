@@ -19,25 +19,39 @@
   (setq treemacs-is-never-other-window t)
   (setq treemacs-indentation 2)
   (setq treemacs-indentation-string " ")
-  (treemacs-filewatch-mode t)
-  (treemacs-git-mode 'deferred)
+  (setq treemacs-filewatch-mode t)
+  (setq treemacs-git-mode 'deferred)
+  (setq treemacs-text-scale 2)
+  (setq treemacs-move-files-by-mouse-dragging nil)
+  (setq treemacs-move-forward-on-expand t)
+  (setq treemacs-pulse-on-success t)
   (setq treemacs-file-event-delay 0)
   (setq treemacs-deferred-git-apply-delay 0)
   (setq treemacs-git-commit-diff-mode 1)
   (with-eval-after-load 'treemacs
     (defun treemacs-ignore-gitignore (file _)
       (string= file "__pycache__"))
-    (push #'treemacs-ignore-gitignore treemacs-ignored-file-predicates))  (add-hook 'treemacs-mode-hook #'treemacs-project-follow-mode))
+    (push #'treemacs-ignore-gitignore treemacs-ignored-file-predicates))
+(add-hook 'treemacs-mode-hook #'treemacs-project-follow-mode))
+
+(defvar my-themes '("doom-moonlight"))
+
 
 (use-package treemacs-nerd-icons
   :after nerd-icons
   :config
   (treemacs-load-theme "nerd-icons"))
-(add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
-;; (custom-set-faces
-;;   '(treemacs-git-modified-face ((t (:foreground "#94e2d5" :weight bold))))
-;;   '(treemacs-git-added-face ((t (:foreground "#cba6f7" :weight bold))))
-;;   '(treemacs-git-untracked-face ((t (:foreground "#f38ba8" :weight bold)))))
+
+(with-eval-after-load 'treemacs-nerd-icons
+  (set-face-foreground 'treemacs-git-modified-face "#94e2d5")
+  (set-face-foreground 'treemacs-git-added-face "#cba6f7")
+  (set-face-foreground 'treemacs-git-untracked-face "#f38ba8")
+  (when (or (not custom-enabled-themes)
+              (cl-find-if (lambda (theme) (member theme my-themes))
+                          (mapcar #'symbol-name custom-enabled-themes)))
+  (set-face-foreground 'treemacs-directory-face "#89b4fa")
+  (set-face-foreground 'treemacs-nerd-icons-file-face "#89b4fa")))
+
 
 (provide 'treemacs)
 ;;; treemacs.el ends here
