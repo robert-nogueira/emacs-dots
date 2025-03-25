@@ -10,7 +10,7 @@
   :config
   (projectile-mode +1))
 
-(setq projectile-project-root-files '(".git" "pyproject.toml"))
+(setq projectile-project-root-files '(".git"))
 (setq projectile-project-search-path '("~/Documents/freelas" "~/Documents/my-projects" "~/Documents/squarecloud")) ;; Diretórios com seus projetos
 
 (provide 'projectile)
