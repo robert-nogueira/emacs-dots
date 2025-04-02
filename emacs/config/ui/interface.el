@@ -28,7 +28,8 @@
  '(fill-column-indicator ((t (:foreground "#cba6f7" :style dotted))))
 )
 (setq display-line-numbers-type 'relative)
-(setq-default right-fringe 10)  ; Aumenta o espaço à direita
+(setq-default right-fringe 10)
+;; (set-face-attribute 'default nil :height 100)
 
 ;;invisible cursor
 ;; (setq x-pointer-shape x-pointer-invisible)
