@@ -22,6 +22,7 @@
 (setq-default truncate-lines t)
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 (setq redisplay-dont-pause t)
+(setq vc-follow-symlinks t)
 
 ;;; settings.el ends here
 (provide 'settings)
