@@ -89,31 +89,3 @@
  '(treemacs-git-added-face ((t (:foreground "#cba6f7" :weight bold))))
  '(treemacs-git-modified-face ((t (:foreground "#94e2d5" :weight bold))))
  '(treemacs-git-untracked-face ((t (:foreground "#f38ba8" :weight bold)))))
-(setq
- python-shell-interpreter "sardine"
- python-shell-interpreter-args "")
-
-(defun sardine/start-sardine ()
-  "Start a new interactive Sardine Session"
-  (interactive)
-  (run-python))
-
-(defun sardine/eval-block ()
-  "Evaluate a sardine code block"
-  (interactive)
-  (mark-paragraph)
-  (if (and transient-mark-mode mark-active)
-      (python-shell-send-region (point) (mark))
-    (python-shell-send-region (point-at-bol) (point-at-eol)))
-  (forward-paragraph))
-
-(defun sardine/stop-code ()
-  "Stop all the Sardine code currently running"
-  (interactive)
-  (python-shell-send-string "panic()"))
-
-; Unmapping keys from the Python mode
-(add-hook 'python-mode-hook
-          (lambda() (local-unset-key (kbd "C-c C-c"))))
-(add-hook 'python-mode-hook
-          (lambda() (local-unset-key (kbd "C-c C-s"))))
