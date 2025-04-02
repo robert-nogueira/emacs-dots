@@ -61,7 +61,6 @@
  '(flycheck-warning ((t (:underline (:color "#b4befe" :style line) :weight normal))))
  '(flycheck-info ((t (:underline (:color "#b4befe" :style line) :weight normal))))
  )
-(setq flycheck-display-errors-function #'flycheck-display-errors-minibuffer)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

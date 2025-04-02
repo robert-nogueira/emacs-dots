@@ -1,0 +1,13 @@
+default_context:
+    github_username: "robert-nogueira"
+
+    # awesome-py-project-template
+    linter: "ruff"
+    formatter: "ruff"
+    type_checker: "pyright"
+    use_isort: false
+    cz_conventional_gitmoji: true
+abbreviations:
+    pp: https://github.com/audreyr/cookiecutter-pypackage.git
+    gh: https://github.com/{0}.git
+    bb: https://bitbucket.org/{0}

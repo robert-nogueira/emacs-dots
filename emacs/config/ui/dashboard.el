@@ -36,8 +36,8 @@
   (dashboard-center-content t)
   (dashboard-banner-logo-title "I use emacs btw 🤓☝️")
   (dashboard-startup-banner (select-random-banner))
- ;; (dashboard-startup-banner '("/home/robert/.emacs.d/config/ui/banners/a.txt"))
-  (dashboard-footer-messages '("Strong coffee, strong code."))
+ (dashboard-startup-banner '("/home/robert/.emacs.d/config/ui/banners/anime-girl-laughing.txt"))
+  ;; (dashboard-footer-messages '("Strong coffee, strong code."))
   (dashboard-footer-icon
    (nerd-icons-mdicon "nf-md-coffee" :height 1.0 :v-adjust -0.05))
   (dashboard-items '((projects  . 10)
@@ -69,6 +69,6 @@
   (set-face-foreground 'dashboard-banner-logo-title "#cba6f7"))
 
 (setq dashboard-projects-backend 'projectile)
-
+(setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
 (provide 'dashboard)
 ;;; dashboard.el ends here

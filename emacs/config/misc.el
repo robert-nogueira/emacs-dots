@@ -97,5 +97,13 @@
 (use-package emojify
   :hook (prog-mode . emojify-mode))
 
+(use-package yaml-mode
+  :ensure t
+      (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+      (add-hook 'yaml-mode-hook
+      '(lambda ()
+        (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+      )
+
 (provide 'misc)
 ;;; misc.el ends here
