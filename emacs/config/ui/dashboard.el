@@ -40,7 +40,7 @@
   ;; (dashboard-footer-messages '("Strong coffee, strong code."))
   (dashboard-footer-icon
    (nerd-icons-mdicon "nf-md-coffee" :height 1.0 :v-adjust -0.05))
-  (dashboard-items '((projects  . 10)
+  (dashboard-items '((projects  . 5)
                      (recents . 5)))
   (dashboard-startupify-list '(
                                dashboard-insert-newline
@@ -70,5 +70,15 @@
 
 (setq dashboard-projects-backend 'projectile)
 (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
+
+(defun my/dashboard-project-name (project-path)
+  "Return only the root folder name from PROJECT-PATH."
+  (file-name-nondirectory (directory-file-name project-path)))
+
+(advice-add 'dashboard-insert-projects :around
+            (lambda (orig-fun &rest args)
+              (cl-letf (((symbol-function 'abbreviate-file-name) #'my/dashboard-project-name))
+                (apply orig-fun args))))
+
 (provide 'dashboard)
 ;;; dashboard.el ends here
