@@ -33,9 +33,6 @@
   (add-hook 'typescript-mode #'subword-mode)
   (add-hook 'typescript-mode-hook 'flycheck-mode))
 
-(use-package javascript-mode
-  :hook (javascript-mode . flycheck-mode))
-
 (use-package json-mode
   :ensure t)
 
