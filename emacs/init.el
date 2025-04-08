@@ -9,33 +9,28 @@
 (add-hook 'emacs-startup-hook
           (lambda () (setq gc-cons-threshold 800000)))
 
-;; Define config directory
 (defvar config-dir (expand-file-name "config" user-emacs-directory))
 
 ;; Add config directory to load-path
 (add-to-list 'load-path config-dir)
 
-;; Load core modules first (basic setup)
 (load (expand-file-name "core/packages" config-dir))
 (load (expand-file-name "core/keybindings" config-dir))
 (load (expand-file-name "core/settings" config-dir))
 
-;; Load UI modules (interface, theme, etc.)
 (load (expand-file-name "ui/interface" config-dir))
 (load (expand-file-name "ui/theme" config-dir))
+(load (expand-file-name "ui/faces" config-dir))
 (load (expand-file-name "ui/dashboard" config-dir))
 
-;; Load completion modules (company, vertico, etc.)
 (load (expand-file-name "completion/company" config-dir))
 (load (expand-file-name "completion/vertico" config-dir))
 (load (expand-file-name "completion/marginalia" config-dir))
 (load (expand-file-name "completion/orderless" config-dir))
 
-;; Load programming-related modules
 (load (expand-file-name "programming/python" config-dir))
 (load (expand-file-name "programming/web-dev" config-dir))
 
-;; Load tool modules (treemacs, centaur-tabs, etc.)
 (load (expand-file-name "tools/treemacs" config-dir))
 (load (expand-file-name "tools/centaur-tabs" config-dir))
 (load (expand-file-name "tools/flycheck" config-dir))
@@ -46,12 +41,8 @@
 (load (expand-file-name "tools/vc" config-dir))
 (load (expand-file-name "tools/ligature" config-dir))
 
-;; Load miscellaneous configurations
 (load (expand-file-name "misc" config-dir))
 (load (expand-file-name "aliases" config-dir))
-
-;;; init.el ends here
-;; (setq treemacs-directory-icon (nerd-icons-octicon "file-directory" :height 1.2 :face `(:foreground "#cba6f7")))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -89,3 +80,4 @@
  '(treemacs-git-added-face ((t (:foreground "#cba6f7" :weight bold))))
  '(treemacs-git-modified-face ((t (:foreground "#94e2d5" :weight bold))))
  '(treemacs-git-untracked-face ((t (:foreground "#f38ba8" :weight bold)))))
+;;; init.el ends here

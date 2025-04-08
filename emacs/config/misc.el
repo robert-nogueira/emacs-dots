@@ -28,11 +28,11 @@
   :init
   (which-key-mode 1)
   :config
-  (setq which-key-separator " → ")) ;; Customize the separator
+  (setq which-key-separator " → "))
 
 (use-package ace-window
   :ensure t
-  :bind (("M-o" . ace-window))) ;; Bind M-o to ace-window for quick navigation
+  :bind (("M-o" . ace-window)))
 
 (use-package xclip
   :ensure t
