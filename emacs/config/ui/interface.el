@@ -21,15 +21,8 @@
 (setq use-dialog-box nil)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 (display-time-mode 1)
-(set-face-attribute 'default nil :height 120)
-(custom-set-faces
- '(line-number ((t (:foreground "#cba6f7"))))
- '(line-number-current-line ((t (:foreground "#b4befe" :weight bold))))
- '(fill-column-indicator ((t (:foreground "#cba6f7" :style dotted))))
-)
 (setq display-line-numbers-type 'relative)
 (setq-default right-fringe 10)
-;; (set-face-attribute 'default nil :height 100)
 
 ;;invisible cursor
 ;; (setq x-pointer-shape x-pointer-invisible)

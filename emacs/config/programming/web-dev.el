@@ -1,16 +1,16 @@
 ;;; web-dev.el --- Web Mode Configuration
 ;;; Commentary:
 
-;; Configuração para Web Mode, incluindo auto-pairing,
-;; realce do elemento atual e fontes de autocompletar.
+;; Configuration for Web Mode including auto-pairing, element highlighting,
+;; Tailwind, Tide, Prettier, and LSP integration.
 
 ;;; Code:
 
 (use-package web-mode
   :ensure t
-  :mode (("\.html?\'" . web-mode)
-         ("\.tsx\'" . web-mode)
-         ("\.jsx\'" . web-mode))
+  :mode (("\\.html?\\'" . web-mode)
+         ("\\.tsx\\'" . web-mode)
+         ("\\.jsx\\'" . web-mode))
   :config
   (setq web-mode-markup-indent-offset 2
         web-mode-css-indent-offset 2
@@ -21,10 +21,15 @@
         web-mode-enable-auto-pairing t
         web-mode-enable-comment-keywords t
         web-mode-enable-current-element-highlight t)
-  (add-hook 'web-mode-hook
-            (lambda ()
-              (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                (setup-tide-mode)))))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (tide-setup)
+              (tide-hl-identifier-mode)
+              (flycheck-mode)
+              (eldoc-mode)
+              (company-mode))))
+)
 
 (use-package typescript-mode
   :ensure t
@@ -49,17 +54,27 @@
          (before-save . tide-format-before-save)))
 
 (use-package lsp-tailwindcss
-  :straight '(lsp-tailwindcss :type git :host github :repo "merrickluo/lsp-tailwindcss")
+  :straight '(lsp-tailwindcss
+              :type git
+              :host github
+              :repo "merrickluo/lsp-tailwindcss")
   :after lsp-mode
   :init
   (setq lsp-tailwindcss-add-on-mode t
-        lsp-tailwindcss-experimental-class-regex ["tw([^]*)" "tw=\"([^\"]*)" "tw={\"([^\"}]*)" "tw\\.\\w+([^]*)" "tw\\(.*?\\)([^]*)"])
+        lsp-tailwindcss-experimental-class-regex
+        ["tw([^]*)"
+         "tw=\"([^\"]*)"
+         "tw={\"([^\"}]*)"
+         "tw\\.\\w+([^]*)"
+         "tw\\(.*?\\)([^]*)"])
   :config
-  (dolist (mode '(css-mode css-ts-mode typescript-mode typescript-ts-mode tsx-ts-mode js2-mode js-ts-mode clojure-mode))
+  (dolist (mode '(css-mode css-ts-mode typescript-mode typescript-ts-mode
+                  tsx-ts-mode js2-mode js-ts-mode clojure-mode))
     (add-to-list 'lsp-tailwindcss-major-modes mode)))
 
 (use-package prettier
   :ensure t)
+
 (add-hook 'after-init-hook #'global-prettier-mode)
 
 (provide 'web-dev)
