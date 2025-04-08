@@ -40,6 +40,7 @@
 (load (expand-file-name "tools/discord" config-dir))
 (load (expand-file-name "tools/vc" config-dir))
 (load (expand-file-name "tools/ligature" config-dir))
+(load (expand-file-name "hooks" config-dir))
 
 (load (expand-file-name "misc" config-dir))
 (load (expand-file-name "aliases" config-dir))
