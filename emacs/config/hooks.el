@@ -76,7 +76,7 @@
     [remap xref-find-references]
     #'lsp-ui-peek-find-references)
 
-  (global-set-key (kbd "C-c C-d") 'lsp-ui-doc-show)
+  (global-set-key (kbd "C-c C-d") 'lsp-ui-doc-show))
 
 (provide 'hooks)
 ;;; hooks.el ends here
