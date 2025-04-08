@@ -9,8 +9,7 @@
   :ensure t
   :config
   (setq vterm-kill-buffer-on-exit t)
-  (global-set-key (kbd "C-c C-t") 'vterm)
-  (add-hook 'vterm-mode-hook (lambda () (display-line-numbers-mode 0))))
+  (global-set-key (kbd "C-c C-t") 'vterm))
 
 (use-package vterm-toggle
   :ensure t

@@ -33,4 +33,3 @@
 
 (provide 'centaur-tabs)
 ;;; centaur-tabs.el ends here
-(add-hook 'dired-mode-hook 'centaur-tabs-local-mode)
