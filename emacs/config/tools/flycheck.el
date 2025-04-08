@@ -12,8 +12,7 @@
   :init
   (setq flycheck-check-syntax-automatically '(save mode-enabled idle-change))
   (setq flycheck-idle-change-delay 0)
-  :config
-  (global-flycheck-mode t))
+)
 
   ;; Define Ruff checker
   ;; (flycheck-define-checker python-ruff
@@ -45,12 +44,11 @@
   ;;             (flycheck-add-next-checker 'python-ruff 'python-mypy))))
 
 
-(flycheck-mode)
 (setq flycheck-checker-cache "~/.flycheck-cache")
 
 (setq flycheck-indication-mode nil)
 
-(add-hook 'text-mode-hook #'flycheck-mode)
+(add-hook 'python-mode-hook #'flycheck-mode)
 ;; (add-hook 'poetry-after-pipenv-activate-hook
 ;;           (lambda ()
 ;;             (when (derived-mode-p 'python-mode)
