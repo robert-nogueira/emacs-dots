@@ -32,9 +32,7 @@
   (diff-hl-flydiff-mode 1)
   (diff-hl-dired-mode 1)
   (diff-hl-margin-mode 1)
-  (diff-hl-amend-mode 1)
-  (add-hook 'after-save-hook #'diff-hl-update)
-  (add-hook 'magit-post-refresh-hook #'diff-hl-magit-post-refresh))
+  (diff-hl-amend-mode 1))
 
 (provide 'vc)
 ;;; vc.el ends here

@@ -28,7 +28,7 @@
   (dashboard-set-file-icons t)
   (dashboard-center-content t)
   (dashboard-banner-logo-title "I use emacs btw 🤓☝️")
-  (dashboard-startup-banner (select-random-banner))
+  (dashboard-startup-banner "/home/robert/.emacs.d/config/ui/banners/emu.txt")
   (dashboard-footer-messages '("vim's cute, but I need more."))
   (dashboard-footer-icon
    (nerd-icons-mdicon "nf-md-coffee" :height 1.0 :v-adjust -0.05))
