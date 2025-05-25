@@ -22,6 +22,7 @@
 (load (expand-file-name "ui/theme" config-dir))
 (load (expand-file-name "ui/faces" config-dir))
 (load (expand-file-name "ui/dashboard" config-dir))
+(load (expand-file-name "ui/modeline" config-dir))
 
 (load (expand-file-name "completion/company" config-dir))
 (load (expand-file-name "completion/vertico" config-dir))
