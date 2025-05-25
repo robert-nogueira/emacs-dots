@@ -6,6 +6,8 @@
 ;;; Code:
 
 (set-face-foreground 'vertical-border "#cba6f7")
+(set-face-attribute 'line-number nil :height 0.7)
+(set-face-attribute 'line-number-current-line nil :height 0.7)
 
 (custom-set-faces
  '(default ((t (:background nil :height 120))))
