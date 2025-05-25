@@ -12,7 +12,9 @@
 
 ;; centaur tabs
 (with-eval-after-load 'centaur-tabs
-  (add-hook 'dired-mode-hook 'centaur-tabs-local-mode))
+  (add-hook 'dired-mode-hook 'centaur-tabs-local-mode)
+  (with-eval-after-load 'vterm
+    (add-hook 'vterm-mode-hook (lambda () (centaur-tabs-mode -1)))))
 
 ;; python (ligature, company, line numbers, font-lock, poetry)
 (with-eval-after-load 'python
