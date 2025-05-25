@@ -106,5 +106,11 @@
         (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
       )
 
+(use-package aggressive-indent
+  :ensure t)
+(global-aggressive-indent-mode 1)
+(add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+
+
 (provide 'misc)
 ;;; misc.el ends here
