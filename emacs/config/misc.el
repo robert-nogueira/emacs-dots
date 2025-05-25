@@ -111,6 +111,15 @@
 (global-aggressive-indent-mode 1)
 (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
 
+;; Credit: https://github.com/SwiftyChicken/dotfiles/blob/7cb2f117d722300d36ce4d0e4ad205f7cb758275/.config/emacs/local/etc/code/prog.el#L21
+(use-package highlight-indent-guides
+  :custom
+  (highlight-indent-guides-auto-enabled nil)
+  (highlight-indent-guides-method 'character)
+  (highlight-indent-guides-character ?︱)
+  (highlight-indent-guides-responsive 'stack)
+  :hook
+  (prog-mode . highlight-indent-guides-mode))
 
 (provide 'misc)
 ;;; misc.el ends here
