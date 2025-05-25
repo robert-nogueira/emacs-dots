@@ -5,6 +5,8 @@
 
 ;;; Code:
 
+(set-face-foreground 'vertical-border "#cba6f7")
+
 (custom-set-faces
  '(default ((t (:background nil :height 120))))
  '(fill-column-indicator ((t (:foreground "#cba6f7" :style dotted))))
