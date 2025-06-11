@@ -1,8 +1,4 @@
 ;;; web-dev.el --- Web Mode Configuration
-;;; Commentary:
-
-;; Configuration for Web Mode including auto-pairing, element highlighting,
-;; Tailwind, Tide, Prettier, and LSP integration.
 
 ;;; Code:
 
@@ -21,22 +17,20 @@
         web-mode-enable-auto-pairing t
         web-mode-enable-comment-keywords t
         web-mode-enable-current-element-highlight t)
-(add-hook 'web-mode-hook
-          (lambda ()
-            (when (string-equal "tsx" (file-name-extension buffer-file-name))
-              (tide-setup)
-              (tide-hl-identifier-mode)
-              (flycheck-mode)
-              (eldoc-mode)
-              (company-mode))))
-)
+  :hook (web-mode . (lambda ()
+                      (when (string-equal "tsx" (file-name-extension buffer-file-name))
+                        (tide-setup)
+                        (tide-hl-identifier-mode)
+                        (flycheck-mode)
+                        (eldoc-mode)
+                        (company-mode)))))
 
 (use-package typescript-mode
   :ensure t
   :config
   (setq typescript-indent-level 2)
-  (add-hook 'typescript-mode #'subword-mode)
-  (add-hook 'typescript-mode-hook 'flycheck-mode))
+  :hook ((typescript-mode . subword-mode)
+         (typescript-mode . flycheck-mode)))
 
 (use-package json-mode
   :ensure t)
@@ -59,7 +53,7 @@
               :host github
               :repo "merrickluo/lsp-tailwindcss")
   :after lsp-mode
-  :init
+  :config
   (setq lsp-tailwindcss-add-on-mode t
         lsp-tailwindcss-experimental-class-regex
         ["tw([^]*)"
@@ -67,9 +61,8 @@
          "tw={\"([^\"}]*)"
          "tw\\.\\w+([^]*)"
          "tw\\(.*?\\)([^]*)"])
-  :config
   (dolist (mode '(css-mode css-ts-mode typescript-mode typescript-ts-mode
-                  tsx-ts-mode js2-mode js-ts-mode clojure-mode))
+			   tsx-ts-mode js2-mode js-ts-mode clojure-mode))
     (add-to-list 'lsp-tailwindcss-major-modes mode)))
 
 (use-package prettier
@@ -77,5 +70,12 @@
 
 (add-hook 'after-init-hook #'global-prettier-mode)
 
+(use-package emmet-mode
+  :ensure t
+  :hook ((html-mode css-mode web-mode typescript-tsx-mode) . emmet-mode)
+  :config
+  (setq emmet-expand-jsx-className? t))
+
 (provide 'web-dev)
+
 ;;; web-dev.el ends here
