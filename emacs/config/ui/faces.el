@@ -67,6 +67,17 @@
   (set-face-background 'company-preview "#11111b")
   (set-face-foreground 'company-preview "#cba6f7"))
 
+(with-eval-after-load 'doom-modeline
+  (custom-set-faces
+   '(doom-modeline-buffer-file ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-buffer-modified ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-info ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-warning ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-urgent ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-error ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-buffer-major-mode ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-buffer-minor-mode ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-lsp-success ((t (:foreground "#cba6f7"))))))
 
 (provide 'faces)
 ;;; faces.el ends here

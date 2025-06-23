@@ -7,6 +7,9 @@
 
 (use-package doom-modeline
   :ensure t
+  :init
+  (setq doom-modeline-buffer-state-icon nil
+        doom-modeline-buffer-modification-icon nil)
   :hook (after-init . doom-modeline-mode))
 
 (setq doom-modeline-height 30)

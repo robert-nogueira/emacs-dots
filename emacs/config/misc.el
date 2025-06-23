@@ -47,6 +47,7 @@
 
 (use-package yasnippet
   :ensure t
+  :hook (prog-mode . yas-minor-mode);
   :config
   (yas-global-mode 1))
 
@@ -75,7 +76,7 @@
   :init
   (setq markdown-command "pandoc")
   (setq markdown-preview-stylesheets (list "~/.emacs.d/github-markdown-dark.css"))
-)
+  )
 
 (use-package markdown-preview-eww
   :ensure t
@@ -100,11 +101,11 @@
 (use-package yaml-mode
   :ensure t
   :config
-      (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
-      (add-hook 'yaml-mode-hook
-      '(lambda ()
-        (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
-      )
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+  (add-hook 'yaml-mode-hook
+	    '(lambda ()
+               (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+  )
 
 (use-package aggressive-indent
   :ensure t)

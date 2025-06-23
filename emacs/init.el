@@ -10,6 +10,7 @@
           (lambda () (setq gc-cons-threshold 800000)))
 
 (defvar config-dir (expand-file-name "config" user-emacs-directory))
+;; (add-to-list 'load-path (expand-file-name "tools" config-dir))
 
 ;; Add config directory to load-path
 (add-to-list 'load-path config-dir)
@@ -17,6 +18,7 @@
 (load (expand-file-name "core/packages" config-dir))
 (load (expand-file-name "core/keybindings" config-dir))
 (load (expand-file-name "core/settings" config-dir))
+(load (expand-file-name "tools/functions" config-dir))
 
 (load (expand-file-name "ui/interface" config-dir))
 (load (expand-file-name "ui/theme" config-dir))
@@ -29,14 +31,16 @@
 (load (expand-file-name "completion/marginalia" config-dir))
 (load (expand-file-name "completion/orderless" config-dir))
 
+;; (load (expand-file-name "programming/python" config-dir))
+(load (expand-file-name "programming/lsp" config-dir))
 (load (expand-file-name "programming/python" config-dir))
+(load (expand-file-name "programming/rust" config-dir))
 (load (expand-file-name "programming/web-dev" config-dir))
 
 (load (expand-file-name "tools/treemacs" config-dir))
 (load (expand-file-name "tools/centaur-tabs" config-dir))
 (load (expand-file-name "tools/flycheck" config-dir))
 (load (expand-file-name "tools/projectile" config-dir))
-(load (expand-file-name "tools/functions" config-dir))
 (load (expand-file-name "tools/vterm" config-dir))
 (load (expand-file-name "tools/discord" config-dir))
 (load (expand-file-name "tools/vc" config-dir))
@@ -53,7 +57,10 @@
  ;; If there is more than one, they won't work right.
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(custom-safe-themes
-   '("8d3ef5ff6273f2a552152c7febc40eabca26bae05bd12bc85062e2dc224cde9a"
+   '("ffba0482d3548c9494e84c1324d527f73ea4e43fff8dfd0e48faa8fc6d5c2bc7"
+     "d0fd069415ef23ccc21ccb0e54d93bdbb996a6cce48ffce7f810826bb243502c"
+     "8f5b54bf6a36fe1c138219960dd324aad8ab1f62f543bed73ef5ad60956e36ae"
+     "8d3ef5ff6273f2a552152c7febc40eabca26bae05bd12bc85062e2dc224cde9a"
      "e8bd9bbf6506afca133125b0be48b1f033b1c8647c628652ab7a2fe065c10ef0"
      "0325a6b5eea7e5febae709dab35ec8648908af12cf2d2b569bedc8da0a3a81c1"
      "1ad12cda71588cc82e74f1cabeed99705c6a60d23ee1bb355c293ba9c000d4ac"
@@ -69,7 +76,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil))))
+ '(default ((t (:background nil :height 120))))
  '(bm-face ((t (:background "#cba6f7" :foreground "#11111b"))))
  '(bm-persistent-face ((t (:background "#cba6f7" :foreground "#11111b"))))
  '(fill-column-indicator ((t (:foreground "#cba6f7" :style dotted))))
@@ -79,7 +86,11 @@
  '(font-lock-unused-variable-face ((t (:foreground "#89dceb" :weight bold))))
  '(line-number ((t (:foreground "#cba6f7"))))
  '(line-number-current-line ((t (:foreground "#b4befe" :weight bold))))
+ '(lsp-ui-doc-background ((t (:background "#1e1e2e"))))
+ '(lsp-ui-doc-header ((t (:background "#cba6f7" :foreground "#1e1e2e" :weight bold))))
+ '(treemacs-directory-face ((t (:foreground "#89b4fa"))))
  '(treemacs-git-added-face ((t (:foreground "#cba6f7" :weight bold))))
  '(treemacs-git-modified-face ((t (:foreground "#94e2d5" :weight bold))))
- '(treemacs-git-untracked-face ((t (:foreground "#f38ba8" :weight bold)))))
+ '(treemacs-git-untracked-face ((t (:foreground "#f38ba8" :weight bold))))
+ '(treemacs-nerd-icons-file-face ((t (:foreground "#89b4fa")))))
 ;;; init.el ends here
