@@ -68,7 +68,9 @@
 (use-package prettier
   :ensure t)
 
-(add-hook 'after-init-hook #'global-prettier-mode)
+(add-hook 'web-mode-hook #'prettier-mode)
+(add-hook 'typescript-mode-hook #'prettier-mode)
+(add-hook 'json-mode-hook #'prettier-mode)
 
 (use-package emmet-mode
   :ensure t
