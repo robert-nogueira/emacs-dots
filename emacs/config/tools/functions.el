@@ -1,6 +1,6 @@
 ;;; functions.el --- Custom Functions for Emacs
 ;;; Commentary:
-;; 
+;;
 ;; This file provides a collection of custom functions to enhance Emacs
 ;; functionality and usability.  It includes:
 ;;
@@ -118,7 +118,6 @@ If no region is selected, send the entire buffer."
 
 (global-set-key (kbd "C-<return>") #'sardine/eval-block)
 (global-set-key (kbd "C-.") #'sardine/stop-code)
-
 
 (provide 'functions)
 ;;; functions.el ends here

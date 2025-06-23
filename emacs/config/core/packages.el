@@ -6,6 +6,14 @@
 
 ;;; Code:
 
+;;; packages.el --- Emacs Packages Setup
+;;; Commentary:
+
+;; This file contains configuration for Emacs packages, including
+;; package management and basic UI improvements.
+
+;;; Code:
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el"
@@ -35,11 +43,16 @@
   :ensure t
   :custom
   (auto-package-update-interval 7)
-  (auto-package-update-prompt-before-update t)  ;; Fechar parêntese corrigido aqui
+  (auto-package-update-prompt-before-update t)
   (auto-package-update-hide-results t)
   :config
   (auto-package-update-maybe)
   (auto-package-update-at-time "21:00"))
+
+;; (setq use-package-always-defer t)
+
+(provide 'packages)
+;;; packages.el ends here
 
 ;; (setq use-package-always-defer t)
 

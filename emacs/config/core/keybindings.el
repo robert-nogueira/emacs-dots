@@ -20,5 +20,8 @@
 (global-set-key (kbd "C-c s") 'hs-show-block)
 (global-set-key (kbd "C-c C-r") 'lsp-rename)
 
+(global-set-key (kbd "/") 'execute-extended-command)
+(global-set-key (kbd "C-c /") (lambda () (interactive) (insert "/")))
+
 (provide 'keybindings)
 ;;; keybindings.el ends here
