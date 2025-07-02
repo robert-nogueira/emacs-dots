@@ -16,3 +16,9 @@ emacs/*
 *.gif
 hypr/themes/colors.conf
 zsh/
+*
+!config/
+!snippets/
+!.gitignore
+!.pre-commit-config.yaml
+!init.el
