@@ -1,16 +1,18 @@
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.3.0
-    hooks:
-    -   id: check-yaml
-    -   id: end-of-file-fixer
-    -   id: trailing-whitespace
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.3.0
+  hooks:
+    - id: check-yaml
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+
 - repo: https://github.com/commitizen-tools/commitizen
   rev: v3.29.0
-  entry: cz check --name cz_gitmoji
   hooks:
     - id: commitizen
+      entry: cz check --name cz_gitmoji
       additional_dependencies: [cz-conventional-gitmoji]
+
 - repo: https://github.com/ljnsn/cz-conventional-gitmoji
   rev: v0.7.0
   hooks:
