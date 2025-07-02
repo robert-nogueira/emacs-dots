@@ -5,12 +5,14 @@
 ;;; Code:
 
 ;; Set garbage collection threshold for faster startup
-(setq gc-cons-threshold most-positive-fixnum)
-(add-hook 'emacs-startup-hook
-          (lambda () (setq gc-cons-threshold 800000)))
+;; (setq gc-cons-threshold most-positive-fixnum)
+;; (add-hook 'emacs-startup-hook
+;;           (lambda () (setq gc-cons-threshold 800000)))
 
 (defvar config-dir (expand-file-name "config" user-emacs-directory))
 ;; (add-to-list 'load-path (expand-file-name "tools" config-dir))
+(setq shell-file-name "/bin/zsh")
+(setq explicit-shell-file-name "/bin/zsh")
 
 ;; Add config directory to load-path
 (add-to-list 'load-path config-dir)
@@ -94,3 +96,22 @@
  '(treemacs-git-untracked-face ((t (:foreground "#f38ba8" :weight bold))))
  '(treemacs-nerd-icons-file-face ((t (:foreground "#89b4fa")))))
 ;;; init.el ends here
+
+;; (use-package poetry
+;;   :straight t
+;;   :ensure t
+;;   :config
+;;   (setq poetry-tracking-strategy 'projectile))
+
+;; (use-package python
+;;   :mode "python-mode"
+;;   :hook (python-mode . (lambda ()
+;;                          (when (poetry-venv-exist-p)
+;;                            (lsp-deferred))))
+;;   :config
+;;   (setq python-indent-guess-indent-offset 4))
+
+;; (use-package lsp-pyright
+;;   :straight t
+;;   :ensure t
+;;   :hook (python-mode . lsp-deferred))
