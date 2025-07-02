@@ -4,6 +4,11 @@
 
 ;;; Code:
 
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-one t))
+
 ;; (load-theme 'ef-cherie t)
 ;; (load-theme 'ef-rosa t)
 ;; (load-theme 'ef-night t)
