@@ -120,6 +120,7 @@
   (highlight-indent-guides-character nil)
   (highlight-indent-guides-responsive 'stack)
   :hook
+
   (prog-mode . highlight-indent-guides-mode)
   :config
   (set-face-attribute 'highlight-indent-guides-odd-face nil :background "#7c6fbe")
@@ -143,6 +144,12 @@
           ("DEBUG"  . "#cba6f7")
           ("GOTCHA" . "#fab387")
           ("STUB"   . "#89b4fa"))))
+
+(use-package persp-mode
+  :ensure t
+  :config
+  (setq persp-auto-resume-time 1)
+  (persp-mode 1))
 
 (provide 'misc)
 ;;; misc.el ends here
