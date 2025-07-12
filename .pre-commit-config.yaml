@@ -7,10 +7,9 @@ repos:
     - id: trailing-whitespace
 
 - repo: https://github.com/commitizen-tools/commitizen
-  rev: v3.29.0
+  rev: v4.8.3
   hooks:
     - id: commitizen
-      entry: cz check --name cz_gitmoji
       additional_dependencies: [cz-conventional-gitmoji]
 
 - repo: https://github.com/ljnsn/cz-conventional-gitmoji
