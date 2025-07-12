@@ -116,7 +116,8 @@
   :custom
   (highlight-indent-guides-auto-enabled nil)
   (highlight-indent-guides-method 'character)
-  (highlight-indent-guides-character ?ǀ) ;; Credit: https://github.com/SwiftyChicken/dotfiles/blob/7cb2f117d722300d36ce4d0e4ad205f7cb758275/.config/emacs/local/etc/code/prog.el#L21
+  ;; (highlight-indent-guides-character ?ǀ) ;; Credit: https://github.com/SwiftyChicken/dotfiles/blob/7cb2f117d722300d36ce4d0e4ad205f7cb758275/.config/emacs/local/etc/code/prog.el#L21
+  (highlight-indent-guides-character nil)
   (highlight-indent-guides-responsive 'stack)
   :hook
   (prog-mode . highlight-indent-guides-mode)
