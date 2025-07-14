@@ -23,7 +23,13 @@
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 (setq redisplay-dont-pause t)
 (setq vc-follow-symlinks t)
+
 (desktop-save-mode 1)
+(unless (file-directory-p "~/.emacs.d/desktop/")
+  (make-directory "~/.emacs.d/desktop/" t))
+(setq desktop-path '("~/.emacs.d/desktop/"))
+(setq desktop-dirname "~/.emacs.d/desktop/")
+(setq desktop-base-file-name "emacs-desktop")
 
 ;;; settings.el ends here
 (provide 'settings)
