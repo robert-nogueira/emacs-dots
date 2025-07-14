@@ -52,10 +52,11 @@
 (setq use-package-always-defer t)
 (setq use-package-always-ensure t)
 
-(provide 'packages)
-;;; packages.el ends here
-
-;; (setq use-package-always-defer t)
+(when (native-comp-available-p)
+  (setq native-comp-speed 2)
+  (setq native-comp-async-report-warnings-errors nil)
+  (add-to-list 'native-comp-eln-load-path
+               (expand-file-name "eln-cache/" user-emacs-directory)))
 
 (provide 'packages)
 ;;; packages.el ends here
