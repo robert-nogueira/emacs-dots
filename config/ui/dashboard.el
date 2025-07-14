@@ -22,13 +22,12 @@
   :ensure t
   :demand t
   :custom
-  (dashboard-setup-startup-hook)
   (dashboard-icon-type 'nerd-icons)
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)
   (dashboard-center-content t)
   (dashboard-banner-logo-title "I use emacs btw 🤓☝️")
-  (dashboard-startup-banner "/home/robert/.emacs.d/config/ui/banners/emu.txt")
+  (dashboard-startup-banner "~/.emacs.d/config/ui/banners/emu.txt")
   (dashboard-footer-messages '("vim's cute, but I need more."))
   (dashboard-footer-icon
    (nerd-icons-mdicon "nf-md-coffee" :height 1.0 :v-adjust -0.05))
@@ -54,12 +53,17 @@
        "Settings" "Open init.el"
        (lambda (&rest _) (find-file user-init-file))))))
   :config
-  (dashboard-setup-startup-hook)
+  ;; só abre dashboard se não abrir arquivo direto
+  (defun my/dashboard-maybe-show ()
+    (unless (buffer-file-name)
+      (dashboard-refresh-buffer)
+      (switch-to-buffer dashboard-buffer-name)))
+  (add-hook 'after-init-hook #'my/dashboard-maybe-show)
+
   (set-face-attribute 'dashboard-banner-logo-title nil :height 180 :weight 'bold)
   (set-face-foreground 'dashboard-banner-logo-title "#cba6f7"))
 
 (setq dashboard-projects-backend 'projectile)
-(setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
 
 (defun my/dashboard-project-name (project-path)
   (file-name-nondirectory (directory-file-name project-path)))
