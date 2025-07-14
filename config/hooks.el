@@ -7,8 +7,7 @@
 
 ;; treemacs
 (with-eval-after-load 'treemacs
-  (add-hook 'treemacs-mode-hook (lambda () (display-line-numbers-mode -1)))
-  (add-hook 'treemacs-mode-hook #'treemacs-project-follow-mode))
+  (add-hook 'treemacs-mode-hook (lambda () (display-line-numbers-mode -1))))
 
 ;; centaur tabs
 (with-eval-after-load 'centaur-tabs
@@ -73,12 +72,12 @@
 ;; lsp ui
 (with-eval-after-load 'lsp-ui
   (define-key lsp-ui-mode-map
-    [remap xref-find-definitions]
-    #'lsp-ui-peek-find-definitions)
+	      [remap xref-find-definitions]
+	      #'lsp-ui-peek-find-definitions)
 
   (define-key lsp-ui-mode-map
-    [remap xref-find-references]
-    #'lsp-ui-peek-find-references)
+	      [remap xref-find-references]
+	      #'lsp-ui-peek-find-references)
 
   (global-set-key (kbd "C-c C-d") 'lsp-ui-doc-show))
 
