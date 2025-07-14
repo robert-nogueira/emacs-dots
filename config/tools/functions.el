@@ -119,5 +119,13 @@ If no region is selected, send the entire buffer."
 (global-set-key (kbd "C-<return>") #'sardine/eval-block)
 (global-set-key (kbd "C-.") #'sardine/stop-code)
 
+(defun my/kill-region-or-line ()
+  (interactive)
+  (if (use-region-p)
+      (kill-region (region-beginning) (region-end))
+    (kill-whole-line)))
+
+(global-set-key (kbd "C-w") #'my/kill-region-or-line)
+
 (provide 'functions)
 ;;; functions.el ends here
