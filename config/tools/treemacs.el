@@ -7,6 +7,7 @@
 
 (use-package treemacs
   :ensure t
+  :defer nil
   :bind (("M-\\" . treemacs))
   :config
   (setq treemacs-hide-gitignored-files-mode t)
