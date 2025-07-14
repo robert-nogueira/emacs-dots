@@ -23,6 +23,7 @@
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 (setq redisplay-dont-pause t)
 (setq vc-follow-symlinks t)
+(desktop-save-mode 1)
 
 ;;; settings.el ends here
 (provide 'settings)
