@@ -50,6 +50,7 @@
   (auto-package-update-at-time "21:00"))
 
 (setq use-package-always-defer t)
+(setq use-package-always-ensure t)
 
 (provide 'packages)
 ;;; packages.el ends here
