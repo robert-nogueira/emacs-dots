@@ -145,11 +145,5 @@
           ("GOTCHA" . "#fab387")
           ("STUB"   . "#89b4fa"))))
 
-(use-package persp-mode
-  :ensure t
-  :config
-  (setq persp-auto-resume-time 1)
-  (persp-mode 1))
-
 (provide 'misc)
 ;;; misc.el ends here
