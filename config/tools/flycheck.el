@@ -7,6 +7,7 @@
 
 (use-package flycheck
   :ensure t
+  :defer nil
   :init
   (setq flycheck-check-syntax-automatically
         '(save mode-enabled idle-change))
