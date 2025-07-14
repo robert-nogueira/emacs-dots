@@ -38,6 +38,7 @@
 
 (use-package treemacs-nerd-icons
   :after nerd-icons
+  :defer nil
   :config
   (treemacs-load-theme "nerd-icons"))
 
