@@ -9,7 +9,10 @@
   :ensure t
   :config
   (setq company-require-match nil)
-  (setq company-backends '((company-capf company-dabbrev company-files company-keywords)))
+  (setq ispell-program-name "hunspell")
+  (setq company-ispell-dictionary "/usr/share/hunspell/en_US.dic")
+  (setq ispell-alternate-dictionary "/usr/share/hunspell/en_US.dic")
+  (setq company-backends '((company-capf company-dabbrev company-files company-keywords company-ispell)))
 
   (global-company-mode 1)
   (setq company-idle-delay 0)
@@ -18,6 +21,7 @@
   (setq company-minimum-prefix-length 1)
   (setq company-selection-wrap-around t)
   (setq company-tooltip-align-annotations t))
+
 
 (add-hook 'python-mode-hook 'company-mode)
 
@@ -30,9 +34,8 @@
 
 (set-face-foreground 'company-tooltip-annotation "#cba6f7")
 (set-face-foreground 'company-tooltip-annotation-selection "#cba6f7")
-(set-face-background 'company-tooltip "#11111b80")
+;; (set-face-background 'company-tooltip "#11111b80")
 (set-face-foreground 'company-tooltip "#89b4fa")
-(set-face-foreground 'company-tooltip-selection "#11111b")
 (set-face-background 'company-preview "#11111b")
 (set-face-foreground 'company-preview "#cba6f7")
 
