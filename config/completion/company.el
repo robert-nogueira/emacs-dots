@@ -27,7 +27,6 @@
 
 (global-set-key (kbd "s-SPC") 'company-complete)
 
-(company-quickhelp-mode)
 
 (set-face-foreground 'company-tooltip-annotation "#cba6f7")
 (set-face-foreground 'company-tooltip-annotation-selection "#cba6f7")
