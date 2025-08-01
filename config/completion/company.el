@@ -7,6 +7,7 @@
 
 (use-package company
   :ensure t
+  :defer nil
   :config
   (setq company-require-match nil)
   (setq ispell-program-name "hunspell")
