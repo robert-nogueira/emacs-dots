@@ -4,6 +4,7 @@
 
 (use-package elcord
   :straight (elcord :type git :host github :repo "robert-nogueira/elcord-enhanced")
+  :defer nil
   :config
   (setq elcord-switch-icons t)
   (setq elcord-refresh-rate 5)
