@@ -5,9 +5,7 @@
 ;;; Code:
 
 (use-package doom-themes
-  :ensure t
-  :config
-  (load-theme 'doom-one t))
+  :ensure t)
 
 ;; (load-theme 'ef-cherie t)
 ;; (load-theme 'ef-rosa t)
@@ -18,5 +16,10 @@
 ;; (load-theme 'doom-outrun-electric t)
 ;; (load-theme 'doom-shades-of-purple t)
 (load-theme 'doom-moonlight t)
+;; plain-dark
+;; fairy-floss
+;; tokyo-night
+;; feather dark
+;; (load-theme 'base16-black-metal t)
 ;; (use-package autothemer :ensure t)
 ;;; theme.el ends here
