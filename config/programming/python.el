@@ -21,11 +21,11 @@
 (use-package lsp-pyright
   :ensure t
   :hook (python-mode . (lambda ()
-             (when (locate-dominating-file default-directory "pyproject.toml")
-               (setq lsp-pyright-venv-path
-                 (string-trim (shell-command-to-string "poetry env info -p")))
-               (lsp-deferred))
-             )))
+			 (when (locate-dominating-file default-directory "pyproject.toml")
+			   (setq lsp-pyright-venv-path
+				 (string-trim (shell-command-to-string "poetry env info -p")))
+			   (lsp-deferred))
+			 )))
 
 (add-hook 'python-mode-hook #'display-line-numbers-mode)
 
