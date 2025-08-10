@@ -82,5 +82,10 @@
 
   (global-set-key (kbd "C-c C-d") 'lsp-ui-doc-show))
 
+(with-eval-after-load 'dockerfile-mode
+  (add-hook 'dockerfile-mode-hook
+            (lambda ()
+              (aggressive-indent-mode -1))))
+
 (provide 'hooks)
 ;;; hooks.el ends here
