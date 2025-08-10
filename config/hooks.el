@@ -56,6 +56,7 @@
 ;; lsp mode
 (with-eval-after-load 'lsp-mode
   (add-hook 'python-mode-hook 'lsp)
+  (add-hook 'dockerfile-mode-hook 'lsp)
   (define-key lsp-mode-map (kbd "C-c r") #'lsp-rename))
 
 ;; lsp pyright
