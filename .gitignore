@@ -7,7 +7,6 @@
 *.swp
 *.swo
 
-emacs/*
 !emacs/config
 !emacs/snippets
 !emacs/init.el
