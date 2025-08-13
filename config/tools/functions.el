@@ -127,5 +127,13 @@ If no region is selected, send the entire buffer."
 
 (global-set-key (kbd "C-w") #'my/kill-region-or-line)
 
+(defun my/copy-region-or-line ()
+  (interactive)
+  (if (use-region-p)
+      (kill-ring-save (region-beginning) (region-end))
+    (kill-ring-save (line-beginning-position) (line-beginning-position 2))))
+
+(global-set-key (kbd "M-w") #'my/copy-region-or-line)
+
 (provide 'functions)
 ;;; functions.el ends here
