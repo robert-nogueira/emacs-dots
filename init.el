@@ -52,6 +52,7 @@
 (load (expand-file-name "tools/vc" config-dir))
 (load (expand-file-name "tools/docker" config-dir))
 (load (expand-file-name "tools/ligature" config-dir))
+(load (expand-file-name "tools/terraform" config-dir))
 
 ;; load hooks and subdirs
 
