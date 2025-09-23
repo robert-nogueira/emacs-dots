@@ -11,7 +11,7 @@
   :bind (("M-\\" . treemacs))
   :config
   (setq treemacs-hide-gitignored-files-mode t)
-  (setq treemacs-project-follow-cleanup t)
+  ;; (setq treemacs-project-follow-cleanup t)
   (setq treemacs-width 45)
   (setq treemacs-width-is-initially-locked nil)
   (setq delete-by-moving-to-trash t)
@@ -22,7 +22,7 @@
   (setq treemacs-indentation-string " ")
   (setq treemacs-filewatch-mode t)
   (setq treemacs-git-mode 'deferred)
-  (setq treemacs-text-scale 2)
+  ;; (setq treemacs-text-scale 2)
   (setq treemacs-move-files-by-mouse-dragging nil)
   (setq treemacs-move-forward-on-expand t)
   (setq treemacs-pulse-on-success t)
@@ -34,7 +34,18 @@
     (string= file "__pycache__"))
   (push #'treemacs-ignore-gitignore treemacs-ignored-file-predicates))
 
-(add-hook 'treemacs-mode-hook #'treemacs-project-follow-mode)
+(remove-hook 'treemacs-mode-hook #'treemacs-project-follow-mode)
+
+(defun my/treemacs-update-follow (&rest _args)
+  "Ativa project-follow-mode só no workspace Default, desativa nos outros."
+  (if (string= (treemacs-workspace->name (treemacs-current-workspace))
+               "Default")
+      (treemacs-project-follow-mode 1)
+    (treemacs-project-follow-mode -1)))
+
+(add-hook 'treemacs-mode-hook #'my/treemacs-update-follow)
+
+(advice-add 'treemacs-switch-workspace :after #'my/treemacs-update-follow)
 
 (use-package treemacs-nerd-icons
   :after nerd-icons
