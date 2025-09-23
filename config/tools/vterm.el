@@ -1,30 +1,24 @@
-;;; vterm.el --- Configuration for vterm and vterm-toggle
+;;; vterm.el --- Configuration for vterm and multi-vterm
 ;;; Commentary:
-;; This file configures vterm, a terminal emulator in Emacs,
-;; and vterm-toggle for easier terminal management.
+;; Configuration for vterm, vterm-toggle, and multi-vterm with unified keybindings
 
 ;;; Code:
 
 (use-package vterm
   :ensure t
+  :defer nil
   :config
-  (setq vterm-kill-buffer-on-exit t)
-  (global-set-key (kbd "C-c C-t") 'vterm))
+  (setq vterm-kill-buffer-on-exit t))
+
+(use-package multi-vterm
+  :ensure t
+  :after vterm
+  :bind (("C-c t" . multi-vterm-project)))
 
 (use-package vterm-toggle
   :ensure t
-  :bind (("C-c t" . my/vterm-toggle-project-root-or-default)
-         ("C-c j" . vterm-toggle-forward)
+  :bind (("C-c j" . vterm-toggle-forward)
          ("C-c l" . vterm-toggle-backward)))
-
-(defun my/vterm-toggle-project-root-or-default ()
-  (interactive)
-  (let ((default-directory
-         (or (and (fboundp 'projectile-project-root)
-                  (projectile-project-root))
-             default-directory)))
-    (vterm-toggle)))
-
 
 (provide 'vterm)
 ;;; vterm.el ends here
