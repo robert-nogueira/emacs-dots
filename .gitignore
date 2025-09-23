@@ -18,6 +18,8 @@
 !/emacs/config/
 !/emacs/snippets/
 !/emacs/init.el
+!screenshot.png
+!README.md
 
 # Ignore specific files and folders
 .env
