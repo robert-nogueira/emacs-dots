@@ -31,5 +31,14 @@
   ("C-s-w" . centaur-tabs--kill-this-buffer-dont-ask)
   ("C-s-S-W" . centaur-tabs-kill-unmodified-buffers-in-current-group))
 
+(defun my-centaur-tabs-buffer-groups ()
+  (list
+   (cond
+    ((derived-mode-p 'vterm-mode) "VTerm")
+    ((buffer-file-name) "Files")
+    (t "Other"))))
+
+(setq centaur-tabs-buffer-groups-function #'my-centaur-tabs-buffer-groups)
+
 (provide 'centaur-tabs)
 ;;; centaur-tabs.el ends here
