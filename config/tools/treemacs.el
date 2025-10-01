@@ -37,11 +37,10 @@
 (remove-hook 'treemacs-mode-hook #'treemacs-project-follow-mode)
 
 (defun my/treemacs-update-follow (&rest _args)
-  "Ativa project-follow-mode só no workspace Default, desativa nos outros."
   (if (string= (treemacs-workspace->name (treemacs-current-workspace))
                "Default")
       (treemacs-project-follow-mode 1)
-    (treemacs-project-follow-mode -1)))
+    (treemacs-project-follow-mode nil)))
 
 (add-hook 'treemacs-mode-hook #'my/treemacs-update-follow)
 
