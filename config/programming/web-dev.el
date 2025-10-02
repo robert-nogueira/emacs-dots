@@ -1,83 +1,61 @@
-;;; web-dev.el --- Web Mode Configuration
-
-;;; Code:
-
 (use-package web-mode
-  :ensure t
-  :mode (("\\.html?\\'" . web-mode)
-         ("\\.tsx\\'" . web-mode)
-         ("\\.jsx\\'" . web-mode))
+  :defer nil
+  :mode ("\\.html?\\'" "\\.tsx\\'" "\\.jsx\\'")
   :config
-  (setq web-mode-markup-indent-offset 2
-        web-mode-css-indent-offset 2
+  (setq web-mode-enable-auto-quoting nil
+        web-mode-markup-indent-offset 2
         web-mode-code-indent-offset 2
-        web-mode-block-padding 2
-        web-mode-comment-style 2
-        web-mode-enable-css-colorization t
-        web-mode-enable-auto-pairing t
-        web-mode-enable-comment-keywords t
-        web-mode-enable-current-element-highlight t)
-  :hook (web-mode . (lambda ()
-                      (when (string-equal "tsx" (file-name-extension buffer-file-name))
-                        (tide-setup)
-                        (tide-hl-identifier-mode)
-                        (flycheck-mode)
-                        (eldoc-mode)
-                        (company-mode)))))
+        web-mode-attr-indent-offset 2
+        web-mode-attr-value-indent-offset 2))
+
+;; (use-package rjsx-mode
+;;   :defer nil
+;;   :mode ("\\.js\\'" "\\.jsx\\'"))
 
 (use-package typescript-mode
-  :ensure t
-  :config
-  (setq typescript-indent-level 2)
-  :hook ((typescript-mode . subword-mode)
-         (typescript-mode . flycheck-mode)))
-
-(use-package json-mode
-  :ensure t)
-
-(use-package prettier-js
-  :ensure t
-  :hook ((typescript-mode . prettier-js-mode)
-         (web-mode . prettier-js-mode)))
+  :defer nil
+  :mode ("\\.ts\\'" "\\.tsx\\'"))
 
 (use-package tide
-  :ensure t
+  :defer nil
   :after (typescript-mode company flycheck)
   :hook ((typescript-mode . tide-setup)
+         (tsx-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save)))
+         (tsx-mode . tide-hl-identifier-mode)
+         (before-save . tide-format-before-save))
+  :config
+  (setq tide-format-options
+        '(:indentSize 2 :tabSize 2 :insertSpaceAfterCommaDelimiter t)))
 
 (use-package lsp-tailwindcss
-  :straight '(lsp-tailwindcss
-              :type git
-              :host github
-              :repo "merrickluo/lsp-tailwindcss")
-  :after lsp-mode
+  :defer nil
+  :after lsp-mode)
+
+(use-package company
+  :defer nil
+  :hook (after-init . global-company-mode)
   :config
-  (setq lsp-tailwindcss-add-on-mode t
-        lsp-tailwindcss-experimental-class-regex
-        ["tw([^]*)"
-         "tw=\"([^\"]*)"
-         "tw={\"([^\"}]*)"
-         "tw\\.\\w+([^]*)"
-         "tw\\(.*?\\)([^]*)"])
-  (dolist (mode '(css-mode css-ts-mode typescript-mode typescript-ts-mode
-			   tsx-ts-mode js2-mode js-ts-mode clojure-mode))
-    (add-to-list 'lsp-tailwindcss-major-modes mode)))
+  (setq company-idle-delay 0.2
+        company-minimum-prefix-length 1))
 
-(use-package prettier
-  :ensure t)
+(use-package flycheck
+  :defer nil
+  :hook (after-init . global-flycheck-mode))
 
-(add-hook 'web-mode-hook #'prettier-mode)
-(add-hook 'typescript-mode-hook #'prettier-mode)
-(add-hook 'json-mode-hook #'prettier-mode)
+(use-package prettier-js
+  :defer nil
+  :hook ((typescript-mode . prettier-js-mode)
+         (tsx-mode . prettier-js-mode)
+         (rjsx-mode . prettier-js-mode)
+         (web-mode . prettier-js-mode)))
+
+(use-package yasnippet
+  :defer nil
+  :hook (after-init . yas-global-mode))
 
 (use-package emmet-mode
-  :ensure t
-  :hook ((html-mode css-mode web-mode typescript-tsx-mode) . emmet-mode)
+  :defer nil
+  :hook ((web-mode css-mode) . emmet-mode)
   :config
   (setq emmet-expand-jsx-className? t))
-
-(provide 'web-dev)
-
-;;; web-dev.el ends here
