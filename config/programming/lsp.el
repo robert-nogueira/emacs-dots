@@ -17,7 +17,7 @@
 (use-package lsp-ui
   :after lsp-mode
   :config
-  (setq lsp-ui-doc-enable t
+  (setq lsp-ui-doc-enable nil
         lsp-ui-doc-include-signature t
         lsp-ui-doc-position 'top
         lsp-ui-doc-side 'right
