@@ -20,8 +20,17 @@
 (global-set-key (kbd "C-c s") 'hs-show-block)
 (global-set-key (kbd "C-c C-r") 'lsp-rename)
 
-;; (global-set-key (kbd "/") 'execute-extended-command)
-;; (global-set-key (kbd "C-c /") (lambda () (interactive) (insert "/")))
+(with-eval-after-load 'lsp-ui
+  (defun toggle-lsp-ui-doc ()
+    (interactive)
+    (if lsp-ui-doc-mode
+        (progn
+          (lsp-ui-doc-hide)
+          (lsp-ui-doc-mode -1))
+      (progn
+        (lsp-ui-doc-mode 1)
+        (lsp-ui-doc-show))))
 
+  (global-set-key (kbd "M-p") #'toggle-lsp-ui-doc))
 (provide 'keybindings)
 ;;; keybindings.el ends here
