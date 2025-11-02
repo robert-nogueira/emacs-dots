@@ -6,7 +6,8 @@
   :ensure t
   :mode "\\.rs\\'"
   :config
-  (setq rust-format-on-save nil)
+  (setq rust-format-on-save t)
+  (setq rust-rustfmt-switches '("--edition" "2024"))
   :hook ((rust-mode . lsp)
          (rust-mode . (lambda ()
                         (setq-local company-backends
