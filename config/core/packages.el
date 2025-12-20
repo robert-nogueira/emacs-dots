@@ -1,24 +1,14 @@
 ;;; packages.el --- Emacs Packages Setup
 ;;; Commentary:
-
-;; This file contains configuration for Emacs packages, including
-;; package management and basic UI improvements.
+;; Package management using straight.el only
 
 ;;; Code:
 
-;;; packages.el --- Emacs Packages Setup
-;;; Commentary:
-
-;; This file contains configuration for Emacs packages, including
-;; package management and basic UI improvements.
-
-;;; Code:
-
+;; Bootstrap straight.el
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el"
-                         (or (bound-and-true-p straight-base-dir)
-                             user-emacs-directory)))
+                         user-emacs-directory))
       (bootstrap-version 7))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
@@ -29,18 +19,15 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(setq package-enable-at-startup nil)
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")))
-(package-initialize)
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
+;; Install and configure use-package via straight
+(straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
+;; Global use-package defaults
+(setq use-package-always-defer t)
+
+;; Auto package updates (managed by straight)
 (use-package auto-package-update
-  :ensure t
   :custom
   (auto-package-update-interval 7)
   (auto-package-update-prompt-before-update t)
@@ -49,9 +36,7 @@
   (auto-package-update-maybe)
   (auto-package-update-at-time "21:00"))
 
-(setq use-package-always-defer t)
-(setq use-package-always-ensure t)
-
+;; Native compilation tuning
 (when (native-comp-available-p)
   (setq native-comp-speed 2)
   (setq native-comp-async-report-warnings-errors nil)
