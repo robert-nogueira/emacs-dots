@@ -68,16 +68,42 @@
   (set-face-foreground 'company-preview "#cba6f7"))
 
 (with-eval-after-load 'doom-modeline
+  ;; Force all doom-modeline elements to use the same color
+  ;; regardless of window focus
   (custom-set-faces
    '(doom-modeline-buffer-file ((t (:foreground "#cba6f7"))))
-   '(doom-modeline-buffer-modified ((t (:foreground "#cba6f7"))))
-   '(doom-modeline-info ((t (:foreground "#cba6f7"))))
-   '(doom-modeline-warning ((t (:foreground "#cba6f7"))))
-   '(doom-modeline-urgent ((t (:foreground "#cba6f7"))))
-   '(doom-modeline-error ((t (:foreground "#cba6f7"))))
-   '(doom-modeline-buffer-major-mode ((t (:foreground "#cba6f7"))))
-   '(doom-modeline-buffer-minor-mode ((t (:foreground "#cba6f7"))))
-   '(doom-modeline-lsp-success ((t (:foreground "#cba6f7"))))))
+   '(doom-modeline-buffer-file-inactive ((t (:foreground "#cba6f7"))))
 
+   '(doom-modeline-buffer-major-mode ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-buffer-major-mode-inactive ((t (:foreground "#cba6f7"))))
+
+   '(doom-modeline-buffer-minor-mode ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-buffer-minor-mode-inactive ((t (:foreground "#cba6f7"))))
+
+   '(doom-modeline-info ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-info-inactive ((t (:foreground "#cba6f7"))))
+
+   '(doom-modeline-warning ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-warning-inactive ((t (:foreground "#cba6f7"))))
+
+   '(doom-modeline-error ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-error-inactive ((t (:foreground "#cba6f7"))))
+
+   '(doom-modeline-urgent ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-urgent-inactive ((t (:foreground "#cba6f7"))))
+
+   '(doom-modeline-lsp-success ((t (:foreground "#cba6f7"))))
+   '(doom-modeline-lsp-success-inactive ((t (:foreground "#cba6f7"))))
+
+   ;; Modeline side bar
+   '(doom-modeline-bar ((t (:background "#cba6f7")))))
+
+  ;; Make active and inactive modeline identical
+  (set-face-attribute 'mode-line nil
+                      :background "#1e1e2e"
+                      :foreground "#cba6f7")
+  (set-face-attribute 'mode-line-inactive nil
+                      :background "#1e1e2e"
+                      :foreground "#cba6f7"))
 (provide 'faces)
 ;;; faces.el ends here
