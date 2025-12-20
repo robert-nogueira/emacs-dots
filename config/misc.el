@@ -145,5 +145,19 @@
           ("GOTCHA" . "#fab387")
           ("STUB"   . "#89b4fa"))))
 
+(defvar my/spotify-last-song nil)
+
+(defun my/spotify-current-song ()
+  "Update echo area only if song changed."
+  (interactive)
+  (let ((song (string-trim
+               (shell-command-to-string "playerctl metadata --format '{{ artist }} - {{ title }}'"))))
+    (unless (equal song my/spotify-last-song)
+      (setq my/spotify-last-song song)
+      (when (> (length song) 0)
+        (message "Spotify: %s" song)))))
+
+(run-with-timer 0 3 #'my/spotify-current-song)
+
 (provide 'misc)
 ;;; misc.el ends here
