@@ -105,5 +105,9 @@
   (set-face-attribute 'mode-line-inactive nil
                       :background "#1e1e2e"
                       :foreground "#cba6f7"))
+
+;; change echo area text color
+(with-current-buffer " *Echo Area 0*" (face-remap-add-relative 'default '(:foreground "#89b4fa")))
+
 (provide 'faces)
 ;;; faces.el ends here
