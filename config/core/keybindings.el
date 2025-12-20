@@ -19,6 +19,7 @@
 (global-set-key (kbd "C-c h") 'hs-hide-block)
 (global-set-key (kbd "C-c s") 'hs-show-block)
 (global-set-key (kbd "C-c C-r") 'lsp-rename)
+(global-set-key (kbd "C-c C-l") #'display-line-numbers-mode)
 
 (with-eval-after-load 'lsp-ui
   (defun toggle-lsp-ui-doc ()

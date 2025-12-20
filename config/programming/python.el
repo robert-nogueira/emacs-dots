@@ -27,7 +27,7 @@
 			   (lsp-deferred))
 			 )))
 
-(add-hook 'python-mode-hook #'display-line-numbers-mode)
+;; (add-hook 'python-mode-hook #'display-line-numbers-mode)
 
 (use-package toml-mode
   :ensure t)
