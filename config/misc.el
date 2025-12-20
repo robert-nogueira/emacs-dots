@@ -112,28 +112,6 @@
 (global-aggressive-indent-mode 1)
 (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
 
-(use-package highlight-indent-guides
-  :custom
-  (highlight-indent-guides-auto-enabled nil)
-  (highlight-indent-guides-method 'character)
-  ;; (highlight-indent-guides-character ?ǀ) ;; Credit: https://github.com/SwiftyChicken/dotfiles/blob/7cb2f117d722300d36ce4d0e4ad205f7cb758275/.config/emacs/local/etc/code/prog.el#L21
-  (highlight-indent-guides-character nil)
-  (highlight-indent-guides-responsive 'stack)
-  :hook
-
-  (prog-mode . highlight-indent-guides-mode)
-  :config
-  (set-face-attribute 'highlight-indent-guides-odd-face nil :background "#7c6fbe")
-  (set-face-attribute 'highlight-indent-guides-even-face nil :background "#7c6fbe")
-  (set-face-attribute 'highlight-indent-guides-character-face nil :foreground "#7c6fbe")
-  (set-face-attribute 'highlight-indent-guides-stack-odd-face nil :background "#7c6fbe")
-  (set-face-attribute 'highlight-indent-guides-stack-even-face nil :background "#7c6fbe")
-  (set-face-attribute 'highlight-indent-guides-stack-character-face nil :foreground "#7c6fbe")
-  (set-face-attribute 'highlight-indent-guides-top-odd-face nil :background "#9ab4ff")
-  (set-face-attribute 'highlight-indent-guides-top-even-face nil :background "#9ab4ff")
-  (set-face-attribute 'highlight-indent-guides-top-character-face nil :foreground "#9ab4ff")
-  )
-
 (use-package hl-todo
   :ensure t
   :hook (prog-mode . hl-todo-mode)
@@ -144,20 +122,6 @@
           ("DEBUG"  . "#cba6f7")
           ("GOTCHA" . "#fab387")
           ("STUB"   . "#89b4fa"))))
-
-(defvar my/spotify-last-song nil)
-
-(defun my/spotify-current-song ()
-  "Update echo area only if song changed."
-  (interactive)
-  (let ((song (string-trim
-               (shell-command-to-string "playerctl metadata --format '{{ artist }} - {{ title }}'"))))
-    (unless (equal song my/spotify-last-song)
-      (setq my/spotify-last-song song)
-      (when (> (length song) 0)
-        (message "Spotify: %s" song)))))
-
-(run-with-timer 0 3 #'my/spotify-current-song)
 
 (provide 'misc)
 ;;; misc.el ends here
