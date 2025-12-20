@@ -30,7 +30,7 @@
         lsp-ui-flycheck-check-mode 'project
         lsp-ui-sideline-show-symbol nil
         lsp-ui-sideline-show-hover nil
-        lsp-ui-doc-delay 0
+        lsp-ui-doc-delay 0.5
         lsp-ui-doc-max-height 70
         lsp-ui-doc-border "#cba6f7")
 
