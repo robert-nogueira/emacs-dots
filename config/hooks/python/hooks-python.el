@@ -13,7 +13,7 @@
 
     (setq-local company-backends '(company-capf company-dabbrev))
 
-    (display-line-numbers-mode 1)
+    ;; (display-line-numbers-mode 1)
     (font-lock-mode 1))
 
   (add-hook 'python-mode-hook #'my/python-mode-setup))

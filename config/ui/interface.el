@@ -10,7 +10,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (setq-default cursor-type 'bar)
-(global-display-line-numbers-mode t)
+;; (global-display-line-numbers-mode t)
 (setq select-enable-clipboard t)
 (global-hl-line-mode 1)
 (delete-selection-mode t)
