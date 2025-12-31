@@ -1,7 +1,6 @@
 ;;; packages.el --- Emacs Packages Setup
 ;;; Commentary:
-;; Package management using straight.el only
-
+;; Package configuration using straight.el + use-package
 ;;; Code:
 
 ;; Bootstrap straight.el
@@ -19,14 +18,13 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; Install and configure use-package via straight
-(straight-use-package 'use-package)
+;; Use straight by default with use-package
 (setq straight-use-package-by-default t)
 
-;; Global use-package defaults
-(setq use-package-always-defer t)
+;; Integrate use-package with straight.el
+(straight-use-package 'use-package)
 
-;; Auto package updates (managed by straight)
+;; Automatic package updates
 (use-package auto-package-update
   :custom
   (auto-package-update-interval 7)
@@ -36,10 +34,14 @@
   (auto-package-update-maybe)
   (auto-package-update-at-time "21:00"))
 
-;; Native compilation tuning
+;; General use-package settings
+(setq use-package-always-defer t)
+(setq use-package-always-ensure t)
+
+;; Native compilation settings
 (when (native-comp-available-p)
-  (setq native-comp-speed 2)
-  (setq native-comp-async-report-warnings-errors nil)
+  (setq native-comp-speed 2
+        native-comp-async-report-warnings-errors nil)
   (add-to-list 'native-comp-eln-load-path
                (expand-file-name "eln-cache/" user-emacs-directory)))
 
