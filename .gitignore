@@ -13,6 +13,7 @@
 # Allow specific folders and files
 !/.gitignore
 !/init.el
+!/early-init.el
 !/config/
 !/snippets/
 !/emacs/config/
