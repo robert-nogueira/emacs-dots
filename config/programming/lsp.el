@@ -1,18 +1,29 @@
 ;;; lsp-config.el --- LSP and related UI configuration
-
 ;;; Code:
 
 (use-package lsp-mode
   :ensure t
   :defer nil
+  :after poetry
   :config
   (setq lsp-headerline-breadcrumb-enable nil
-        lsp-enable-snippet nil
-        lsp-rust-analyzer-server-display-inlay-hints t
+        lsp-enable-snippet nil)
+
+  ;; Configuração para Rust (mantida)
+  (setq lsp-rust-analyzer-server-display-inlay-hints t
         lsp-rust-analyzer-cargo-watch-command "clippy"
         lsp-rust-analyzer-completion-add-call-parenthesis t
         lsp-rust-analyzer-completion-add-call-argument-snippets t)
-  :hook ((rust-mode . lsp)))
+
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection '("zuban" "server"))
+    :major-modes '(python-mode)
+    :server-id 'zuban
+    :priority 10))
+
+  :hook ((rust-mode . lsp)
+         (python-mode . lsp)))
 
 (use-package lsp-ui
   :after lsp-mode
@@ -32,16 +43,14 @@
         lsp-ui-sideline-show-hover nil
         lsp-ui-doc-delay 0.5
         lsp-ui-doc-max-height 70
-        lsp-ui-doc-border "#cba6f7")
-
+        lsp-ui-doc-border "#cba6f7"
+	lsp-headerline-breadcrumb-enable-diagnostics nil)
   (define-key lsp-ui-mode-map
 	      [remap xref-find-definitions]
 	      #'lsp-ui-peek-find-definitions)
-
   (define-key lsp-ui-mode-map
 	      [remap xref-find-references]
 	      #'lsp-ui-peek-find-references)
-
   (global-set-key (kbd "C-c C-d") 'lsp-ui-doc-show))
 
 (with-eval-after-load 'lsp-mode
@@ -50,5 +59,4 @@
 (advice-add 'lsp--info :around (lambda (&rest _) nil))
 
 (provide 'lsp-config)
-
 ;;; lsp-config.el ends here
