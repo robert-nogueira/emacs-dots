@@ -106,6 +106,10 @@
                       :background "#1e1e2e"
                       :foreground "#cba6f7"))
 
+(with-eval-after-load 'lsp-mode
+  (custom-set-faces
+   '(lsp-headerline-breadcrumb-path-face ((t (:foreground "#cba6f7" :weight bold))))
+   '(lsp-headerline-breadcrumb-symbols-face ((t (:foreground "#89b4fa"))))))
 ;; change echo area text color
 (with-current-buffer " *Echo Area 0*" (face-remap-add-relative 'default '(:foreground "#89b4fa")))
 
