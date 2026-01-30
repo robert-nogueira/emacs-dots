@@ -15,3 +15,5 @@
     (set-face-background 'default "unspecified-bg" (selected-frame))))
 
 (add-hook 'window-setup-hook 'on-after-init)
+(set-face-attribute 'line-number nil :background 'unspecified)
+(set-face-attribute 'line-number-current-line nil :background 'unspecified)
