@@ -21,9 +21,7 @@
     (flycheck-display-error-messages errors)))
 
 (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-buffer)
+(setq-default flycheck-disabled-checkers '(python-ruff))
 
 (provide 'flycheck)
-;; Local Variables:
-;; flycheck-disabled-checkers: (emacs-lisp-checkdoc)
-;; End:
 ;;; flycheck.el ends here
