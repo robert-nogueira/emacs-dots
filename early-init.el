@@ -9,3 +9,9 @@
 
 (add-to-list 'initial-frame-alist '(background-color . "#212337"))
 (add-to-list 'initial-frame-alist '(foreground-color . "#c0caf5"))
+
+(defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+
+(add-hook 'window-setup-hook 'on-after-init)
