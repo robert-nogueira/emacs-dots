@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-;; (set-face-foreground 'vertical-border "#cba6f7")
+(set-face-foreground 'vertical-border "#cba6f7")
 (set-face-attribute 'line-number nil :height 0.7)
 (set-face-attribute 'line-number-current-line nil :height 0.7)
 
@@ -110,8 +110,6 @@
   (custom-set-faces
    '(lsp-headerline-breadcrumb-path-face ((t (:foreground "#cba6f7" :weight bold))))
    '(lsp-headerline-breadcrumb-symbols-face ((t (:foreground "#89b4fa"))))))
-;; change echo area text color
-(with-current-buffer " *Echo Area 0*" (face-remap-add-relative 'default '(:foreground "#89b4fa")))
 
 (provide 'faces)
 ;;; faces.el ends here
