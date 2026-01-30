@@ -24,6 +24,7 @@
 (load (expand-file-name "optimization" config-dir))
 (load (expand-file-name "core/keybindings" config-dir))
 (load (expand-file-name "core/settings" config-dir))
+(load (expand-file-name "core/clipboard" config-dir))
 (load (expand-file-name "tools/functions" config-dir))
 
 (load (expand-file-name "completion/company" config-dir))
@@ -107,7 +108,7 @@
  '(treemacs-directory-face ((t (:foreground "#89b4fa"))))
  '(treemacs-git-added-face ((t (:foreground "#cba6f7" :weight bold))))
  '(treemacs-git-modified-face ((t (:foreground "#94e2d5" :weight bold))))
- '(treemacs-git-untracked-face ((t (:foreground "#f38ba8" :weight bold))))
+ '(treemacs-gnit-untracked-face ((t (:foreground "#f38ba8" :weight bold))))
  '(treemacs-nerd-icons-file-face ((t (:foreground "#89b4fa")))))
 
 (custom-set-faces
