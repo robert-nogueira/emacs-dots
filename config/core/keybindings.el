@@ -12,7 +12,7 @@
 (global-set-key (kbd "C-j") 'shrink-window-horizontally)
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 (global-set-key (kbd "C-c y") 'company-yasnippet)
-;; (global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "C-z"))
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "C-0") 'text-scale-adjust)
@@ -20,6 +20,9 @@
 (global-set-key (kbd "C-c s") 'hs-show-block)
 (global-set-key (kbd "C-c C-r") 'lsp-rename)
 (global-set-key (kbd "C-c C-l") #'display-line-numbers-mode)
+
+(define-key input-decode-map "\e[127;6u" [C-S-backspace])
+(global-set-key (kbd "C-S-<backspace>") 'kill-whole-line)
 
 (with-eval-after-load 'lsp-ui
   (defun toggle-lsp-ui-doc ()
@@ -33,5 +36,6 @@
         (lsp-ui-doc-show))))
 
   (global-set-key (kbd "M-p") #'toggle-lsp-ui-doc))
+
 (provide 'keybindings)
 ;;; keybindings.el ends here
