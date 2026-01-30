@@ -21,8 +21,14 @@
 (global-set-key (kbd "C-c C-r") 'lsp-rename)
 (global-set-key (kbd "C-c C-l") #'display-line-numbers-mode)
 
-(define-key input-decode-map "\e[127;6u" [C-S-backspace])
+(unless (display-graphic-p)
+  (define-key input-decode-map "\e[127;6u" [C-S-backspace])
+(define-key input-decode-map "\e[27;5;9~" [C-tab])
+(define-key input-decode-map "\e[27;6;9~" [C-S-tab])
+
 (global-set-key (kbd "C-S-<backspace>") 'kill-whole-line)
+(global-set-key (kbd "<C-tab>") 'centaur-tabs-forward)
+(global-set-key (kbd "<C-S-tab>") 'centaur-tabs-backward))
 
 (with-eval-after-load 'lsp-ui
   (defun toggle-lsp-ui-doc ()
