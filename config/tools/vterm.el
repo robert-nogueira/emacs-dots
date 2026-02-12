@@ -8,6 +8,7 @@
   :ensure t
   :defer nil
   :config
+  (setq vterm-always-compile-module nil)
   (setq vterm-kill-buffer-on-exit t))
 
 (use-package multi-vterm
