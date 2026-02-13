@@ -23,6 +23,7 @@
 (add-hook 'prog-mode-hook 'hs-minor-mode)
 (setq redisplay-dont-pause t)
 (setq vc-follow-symlinks t)
+(setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
 
 ;;; settings.el ends here
 (provide 'settings)
