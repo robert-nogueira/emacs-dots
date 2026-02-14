@@ -33,12 +33,13 @@
 
 ;; Buffer groups
 (defun my-centaur-tabs-buffer-groups ()
-  (list
-   (cond
-    ((derived-mode-p 'vterm-mode) "VTerm")
-    ((buffer-file-name) "Files")
-    (t "Other"))))
-(setq centaur-tabs-buffer-groups-function #'my-centaur-tabs-buffer-groups)
+  "Return Centaur Tabs groups for the current buffer, scoped per frame."
+  (let ((frame-id (frame-parameter nil 'name))) ;; or use (selected-frame)
+    (list
+     (cond
+      ((derived-mode-p 'vterm-mode) (concat "VTerm-" (or frame-id "")))
+      ((buffer-file-name) "Files")
+      (t "Other")))))
 
 ;; Note for me: function to fix the "line" background per frame (TUI/daemon safe)
 (defun my/centaur-tabs-fix-line-for-frame (frame)
