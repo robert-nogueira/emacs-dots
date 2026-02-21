@@ -21,7 +21,7 @@
     (flycheck-display-error-messages errors)))
 
 (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-buffer)
-(setq-default flycheck-disabled-checkers '(python-ruff))
+;; (setq-default flycheck-disabled-checkers '(python-ruff))
 
 (provide 'flycheck)
 ;;; flycheck.el ends here
