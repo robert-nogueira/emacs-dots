@@ -6,6 +6,7 @@
 
 (global-set-key "\M-h" 'help-for-help)
 (global-set-key (kbd "C-q") 'other-window)
+(global-set-key (kbd "M-SPC") 'company-complete)
 (global-set-key (kbd "C-k") 'enlarge-window)
 (global-set-key (kbd "C-i") 'shrink-window)
 (global-set-key (kbd "C-l") 'enlarge-window-horizontally)
@@ -23,12 +24,12 @@
 
 (unless (display-graphic-p)
   (define-key input-decode-map "\e[127;6u" [C-S-backspace])
-(define-key input-decode-map "\e[27;5;9~" [C-tab])
-(define-key input-decode-map "\e[27;6;9~" [C-S-tab])
+  (define-key input-decode-map "\e[27;5;9~" [C-tab])
+  (define-key input-decode-map "\e[27;6;9~" [C-S-tab])
 
-(global-set-key (kbd "C-S-<backspace>") 'kill-whole-line)
-(global-set-key (kbd "<C-tab>") 'centaur-tabs-forward)
-(global-set-key (kbd "<C-S-tab>") 'centaur-tabs-backward))
+  (global-set-key (kbd "C-S-<backspace>") 'kill-whole-line)
+  (global-set-key (kbd "<C-tab>") 'centaur-tabs-forward)
+  (global-set-key (kbd "<C-S-tab>") 'centaur-tabs-backward))
 
 (with-eval-after-load 'lsp-ui
   (defun toggle-lsp-ui-doc ()
