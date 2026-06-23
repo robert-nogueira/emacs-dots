@@ -73,6 +73,7 @@
   (global-set-key (kbd "C-c C-d") 'lsp-ui-doc-show))
 
 (with-eval-after-load 'lsp-mode
+  (setq lsp-signature-auto-activate nil)
   (define-key lsp-mode-map (kbd "C-c r") #'lsp-rename))
 
 (advice-add 'lsp--info :around (lambda (&rest _) nil))
