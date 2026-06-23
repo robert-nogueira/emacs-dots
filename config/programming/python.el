@@ -7,6 +7,7 @@
 (use-package poetry
   :straight t
   :ensure t
+  :demand t
   :config (poetry-tracking-mode))
 
 (use-package python
