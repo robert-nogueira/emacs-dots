@@ -8,7 +8,7 @@
   :config
   (setq rust-format-on-save t)
   (setq rust-rustfmt-switches '("--edition" "2024"))
-  :hook ((rust-mode . lsp)
+  :hook ((rust-mode . lsp-deferred)
          (rust-mode . (lambda ()
                         (setq-local company-backends
                                     '(company-capf company-dabbrev))))))
