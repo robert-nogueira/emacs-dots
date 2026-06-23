@@ -28,18 +28,7 @@
     (or (locate-dominating-file default-directory "Cargo.toml")
         default-directory))
 
-  (setq lsp-rust-analyzer-root-function #'my/lsp-rust-root)
-
-  (lsp-register-client
-   (make-lsp-client
-    :new-connection (lsp-stdio-connection '("zuban" "server"))
-    :major-modes '(python-mode)
-    :server-id 'zuban
-    :priority 10))
-
-  :hook
-  ((rust-mode . lsp)
-   (python-mode . lsp)))
+  (setq lsp-rust-analyzer-root-function #'my/lsp-rust-root))
 
 (use-package lsp-ui
   :after lsp-mode
