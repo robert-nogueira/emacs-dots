@@ -5,15 +5,30 @@
   :ensure t
   :defer nil
   :after poetry
+  :init
+  (setq lsp-auto-guess-root nil
+        lsp-keep-workspace-alive nil
+        lsp-session-file (expand-file-name ".lsp-session" user-emacs-directory)
+        lsp-restart 'ignore)
+
   :config
   (setq lsp-headerline-breadcrumb-enable nil
-        lsp-enable-snippet nil)
+        lsp-enable-snippet nil
+        lsp-enable-file-watchers nil
+        lsp-file-watch-threshold 20000)
 
-  ;; Configuração para Rust (mantida)
-  (setq lsp-rust-analyzer-server-display-inlay-hints t
+  (setq lsp-rust-analyzer-server-display-inlay-hints nil
         lsp-rust-analyzer-cargo-watch-command "clippy"
         lsp-rust-analyzer-completion-add-call-parenthesis t
-        lsp-rust-analyzer-completion-add-call-argument-snippets t)
+        lsp-rust-analyzer-completion-add-call-argument-snippets t
+        lsp-rust-analyzer-proc-macro-enable nil
+        lsp-rust-analyzer-cargo-load-out-dirs-from-check nil)
+
+  (defun my/lsp-rust-root ()
+    (or (locate-dominating-file default-directory "Cargo.toml")
+        default-directory))
+
+  (setq lsp-rust-analyzer-root-function #'my/lsp-rust-root)
 
   (lsp-register-client
    (make-lsp-client
@@ -22,8 +37,9 @@
     :server-id 'zuban
     :priority 10))
 
-  :hook ((rust-mode . lsp)
-         (python-mode . lsp)))
+  :hook
+  ((rust-mode . lsp)
+   (python-mode . lsp)))
 
 (use-package lsp-ui
   :after lsp-mode
@@ -44,13 +60,16 @@
         lsp-ui-doc-delay 0.5
         lsp-ui-doc-max-height 70
         lsp-ui-doc-border "#cba6f7"
-	lsp-headerline-breadcrumb-enable-diagnostics nil)
+        lsp-headerline-breadcrumb-enable-diagnostics nil)
+
   (define-key lsp-ui-mode-map
-	      [remap xref-find-definitions]
-	      #'lsp-ui-peek-find-definitions)
+              [remap xref-find-definitions]
+              #'lsp-ui-peek-find-definitions)
+
   (define-key lsp-ui-mode-map
-	      [remap xref-find-references]
-	      #'lsp-ui-peek-find-references)
+              [remap xref-find-references]
+              #'lsp-ui-peek-find-references)
+
   (global-set-key (kbd "C-c C-d") 'lsp-ui-doc-show))
 
 (with-eval-after-load 'lsp-mode
