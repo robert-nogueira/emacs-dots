@@ -20,10 +20,13 @@
 
 (use-package lsp-pyright
   :ensure t
+  :init
+  (setq lsp-pyright-diagnostic-mode "workspace")
   :hook (python-mode . (lambda ()
 			 (when (locate-dominating-file default-directory "pyproject.toml")
-			   (setq lsp-pyright-venv-path
-				 (string-trim (shell-command-to-string "poetry env info -p")))
+			   (let ((venv (string-trim (shell-command-to-string "poetry env info -p"))))
+			     (setq-local lsp-pyright-venv-path
+					 (and (not (string-empty-p venv)) (file-directory-p venv) venv)))
 			   (lsp-deferred))
 			 )))
 
