@@ -21,7 +21,7 @@
         lsp-rust-analyzer-cargo-watch-command "clippy"
         lsp-rust-analyzer-completion-add-call-parenthesis t
         lsp-rust-analyzer-completion-add-call-argument-snippets t
-        lsp-rust-analyzer-proc-macro-enable nil
+        lsp-rust-analyzer-proc-macro-enable t
         lsp-rust-analyzer-cargo-load-out-dirs-from-check nil)
 
   (defun my/lsp-rust-root ()
