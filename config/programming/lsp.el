@@ -20,9 +20,7 @@
   (setq lsp-rust-analyzer-server-display-inlay-hints nil
         lsp-rust-analyzer-cargo-watch-command "clippy"
         lsp-rust-analyzer-completion-add-call-parenthesis t
-        lsp-rust-analyzer-completion-add-call-argument-snippets t
-        lsp-rust-analyzer-proc-macro-enable t
-        lsp-rust-analyzer-cargo-load-out-dirs-from-check nil)
+        lsp-rust-analyzer-completion-add-call-argument-snippets t)
 
   (defun my/lsp-rust-root ()
     (or (locate-dominating-file default-directory "Cargo.toml")
