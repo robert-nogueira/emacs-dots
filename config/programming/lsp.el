@@ -19,6 +19,7 @@
 
   (setq lsp-rust-analyzer-server-display-inlay-hints nil
         lsp-rust-analyzer-cargo-watch-command "clippy"
+        lsp-rust-analyzer-cargo-all-features t
         lsp-rust-analyzer-completion-add-call-parenthesis t
         lsp-rust-analyzer-completion-add-call-argument-snippets t)
 
