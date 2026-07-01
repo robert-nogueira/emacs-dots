@@ -12,7 +12,7 @@
   :init
   (setq flycheck-check-syntax-automatically
         '(save mode-enabled idle-change))
-  (setq flycheck-idle-change-delay 0)
+  (setq flycheck-idle-change-delay 1.0)
   (setq flycheck-checker-cache "~/.flycheck-cache")
   (setq flycheck-indication-mode nil))
 
