@@ -21,19 +21,18 @@
   "Format the buffer with ruff and restore the cursor position.
 Only runs in python-mode."
   (interactive)
-  (if (derived-mode-p 'python-mode)  ; Check if in python-mode
-      (let ((saved-point (point)))
-        (let ((exit-code (call-process-region (point-min) (point-max)
-                                              "ruff" nil "*Ruff Format Output*"
-                                              t "format" "-")))
-          (if (zerop exit-code)
-              (progn
-                (shell-command-on-region (point-min) (point-max) "ruff format -"
-                                         nil t)
-                (goto-char saved-point)
-                (message "Buffer formatted and saved with ruff!"))
-            (message "Error formatting with ruff! Exit code: %d" exit-code))))
-    (message "Not in Python mode. Ruff formatting skipped.")))
+  (when (derived-mode-p 'python-mode)
+    (let ((saved-point (point))
+          (tmp (generate-new-buffer " *ruff*")))
+      (unwind-protect
+          (if (zerop (call-process-region (point-min) (point-max) "ruff" nil tmp nil "format" "-"))
+              (let ((formatted (with-current-buffer tmp (buffer-string))))
+                (erase-buffer)
+                (insert formatted)
+                (goto-char (min saved-point (point-max)))
+                (message "Buffer formatted with ruff!"))
+            (message "Ruff formatting failed"))
+        (kill-buffer tmp)))))
 
 (defun my/setup-ruff-formatting ()
   "Setup keybindings and hooks for Ruff formatting in Python mode."
