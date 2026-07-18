@@ -22,11 +22,7 @@
         lsp-rust-analyzer-completion-add-call-parenthesis t
         lsp-rust-analyzer-completion-add-call-argument-snippets t)
 
-  (defun my/lsp-rust-root ()
-    (or (locate-dominating-file default-directory "Cargo.toml")
-        default-directory))
-
-  (setq lsp-rust-analyzer-root-function #'my/lsp-rust-root))
+  )
 
 (use-package lsp-ui
   :after lsp-mode
@@ -65,27 +61,6 @@
 
 (advice-add 'lsp--info :around (lambda (&rest _) nil))
 
-(with-eval-after-load 'lsp-completion
-  (defun my/lsp-fix-completion-item-nulls (item)
-    "Normalize nil boolean fields to :json-false in completion item data.
-Workaround for rust-analyzer 1.97 bug: sends null for boolean fields
-in completion item data, then fails to deserialize them on resolve."
-    (when-let* ((data (and (hash-table-p item) (gethash "data" item))))
-      (when (hash-table-p data)
-        (dolist (key '("for_ref" "as_underscore"))
-          (when (null (gethash key data))
-            (puthash key :json-false data)))
-        (when-let* ((imports (gethash "imports" data)))
-          (seq-doseq (imp (if (vectorp imports) imports []))
-            (when (hash-table-p imp)
-              (when (null (gethash "as_underscore" imp))
-                (puthash "as_underscore" :json-false imp)))))))
-    item)
-
-  (advice-add 'lsp-completion--resolve-async :filter-args
-              (lambda (args)
-                (cons (my/lsp-fix-completion-item-nulls (car args))
-                      (cdr args)))))
 
 (provide 'lsp-config)
 ;;; lsp-config.el ends here
