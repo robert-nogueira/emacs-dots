@@ -40,5 +40,26 @@
    '(web-mode-css-property-name-face ((t (:foreground "#FFFFFF"))))
    '(web-mode-css-selector-face ((t (:foreground "#9A9EE6"))))))
 
+;; vterm's 16 ANSI colors, same values as the Monochromatic Hyprland
+;; VS Code theme's integrated terminal palette
+(with-eval-after-load 'vterm
+  (custom-set-faces
+   '(vterm-color-black ((t (:foreground "#292B52" :background "#292B52"))))
+   '(vterm-color-bright-black ((t (:foreground "#575A8F" :background "#575A8F"))))
+   '(vterm-color-red ((t (:foreground "#D4CCFF" :background "#D4CCFF"))))
+   '(vterm-color-bright-red ((t (:foreground "#B5AAF0" :background "#B5AAF0"))))
+   '(vterm-color-green ((t (:foreground "#CCCFFF" :background "#CCCFFF"))))
+   '(vterm-color-bright-green ((t (:foreground "#AAAFF0" :background "#AAAFF0"))))
+   '(vterm-color-yellow ((t (:foreground "#CCCDFF" :background "#CCCDFF"))))
+   '(vterm-color-bright-yellow ((t (:foreground "#AAABF0" :background "#AAABF0"))))
+   '(vterm-color-blue ((t (:foreground "#9A9EE6" :background "#9A9EE6"))))
+   '(vterm-color-bright-blue ((t (:foreground "#9A9EE6" :background "#9A9EE6"))))
+   '(vterm-color-magenta ((t (:foreground "#9A9EE6" :background "#9A9EE6"))))
+   '(vterm-color-bright-magenta ((t (:foreground "#9A9EE6" :background "#9A9EE6"))))
+   '(vterm-color-cyan ((t (:foreground "#9A9BE6" :background "#9A9BE6"))))
+   '(vterm-color-bright-cyan ((t (:foreground "#9A9BE6" :background "#9A9BE6"))))
+   '(vterm-color-white ((t (:foreground "#D4CCFF" :background "#D4CCFF"))))
+   '(vterm-color-bright-white ((t (:foreground "#B5AAF0" :background "#B5AAF0"))))))
+
 (provide 'syntax)
 ;;; syntax.el ends here
