@@ -43,13 +43,6 @@
    '(lsp-ui-doc-header
      ((t (:background "#cba6f7" :foreground "#1e1e2e" :weight bold))))))
 
-(with-eval-after-load 'web-mode
-  (custom-set-faces
-   '(web-mode-html-tag-face ((t (:foreground "#cba6f7"))))
-   '(web-mode-html-attr-name-face ((t (:foreground "#fab387"))))
-   '(web-mode-css-property-name-face ((t (:foreground "#f9e2af"))))
-   '(web-mode-css-selector-face ((t (:foreground "#b4befe"))))))
-
 (with-eval-after-load 'treemacs-nerd-icons
   (custom-set-faces
    '(treemacs-git-modified-face ((t (:foreground "#94e2d5" :weight bold))))

@@ -36,6 +36,7 @@
 (load (expand-file-name "ui/interface" config-dir))
 (load (expand-file-name "ui/theme" config-dir))
 (load (expand-file-name "ui/faces" config-dir))
+(load (expand-file-name "ui/syntax" config-dir))
 (load (expand-file-name "ui/dashboard" config-dir))
 (load (expand-file-name "ui/modeline" config-dir))
 
