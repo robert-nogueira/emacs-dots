@@ -21,6 +21,7 @@
 (global-set-key (kbd "C-c s") 'hs-show-block)
 (global-set-key (kbd "C-c C-r") 'lsp-rename)
 (global-set-key (kbd "C-c C-l") #'display-line-numbers-mode)
+(global-set-key (kbd "C-c c") #'global-centered-cursor-mode)
 
 (unless (display-graphic-p)
   (define-key input-decode-map "\e[127;6u" [C-S-backspace])
