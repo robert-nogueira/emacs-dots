@@ -107,12 +107,6 @@
                (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
   )
 
-(use-package aggressive-indent
-  :ensure t)
-(global-aggressive-indent-mode 1)
-(dolist (mode '(html-mode rust-mode python-mode))
-  (add-to-list 'aggressive-indent-excluded-modes mode))
-
 (use-package hl-todo
   :ensure t
   :hook (prog-mode . hl-todo-mode)
