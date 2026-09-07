@@ -43,6 +43,7 @@
 (load (expand-file-name "programming/lsp" config-dir))
 (load (expand-file-name "programming/python" config-dir))
 (load (expand-file-name "programming/rust" config-dir))
+(load (expand-file-name "programming/lua" config-dir))
 (load (expand-file-name "programming/web-dev" config-dir))
 
 (load (expand-file-name "tools/treemacs" config-dir))
