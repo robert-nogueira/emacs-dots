@@ -2,42 +2,12 @@
 ;;; Commentary:
 ;;
 ;; This file provides a collection of custom functions to enhance Emacs
-;; functionality and usability.  It includes:
+;; functionality and usability. It includes:
 ;;
-;; - **Python Formatting**: Functions for formatting Python code using Ruff.
-;; - **Word Deletion**: Custom keybindings for deleting words without adding
-;;   them to the kill ring.
-;; - **Sardine Integration**: Functions for interacting with Sardine, a live
-;;   coding environment for Python.  This includes starting a Sardine shell,
-;;   evaluating code blocks, and stopping execution.
+;; - Word deletion helpers.
+;; - Sardine integration for live Python coding.
 ;;
-;; The Sardine-related functions allow users to run Python code interactively
-;; in a dedicated buffer while disabling Flycheck to avoid conflicts.
-;; Users can send code to the Sardine process and interrupt execution if needed.
-
 ;;; Code:
-
-(defun my/ruff-format-buffer ()
-  "Format the buffer with ruff and restore the cursor position.
-Only runs in python-mode."
-  (interactive)
-  (when (derived-mode-p 'python-mode)
-    (let ((saved-point (point))
-          (tmp (generate-new-buffer " *ruff*")))
-      (unwind-protect
-          (if (zerop (call-process-region (point-min) (point-max) "ruff" nil tmp nil "format" "-"))
-              (let ((formatted (with-current-buffer tmp (buffer-string))))
-                (erase-buffer)
-                (insert formatted)
-                (goto-char (min saved-point (point-max)))
-                (message "Buffer formatted with ruff!"))
-            (message "Ruff formatting failed"))
-        (kill-buffer tmp)))))
-
-(defun my/setup-ruff-formatting ()
-  "Setup keybindings and hooks for Ruff formatting in Python mode."
-  (local-set-key (kbd "C-M-l") 'my/ruff-format-buffer)
-  (add-hook 'before-save-hook 'my/ruff-format-buffer nil t))  ; Hook only for current buffer
 
 (defun my/delete-word (arg)
   "Delete characters forward until encountering the end of a word.
@@ -63,8 +33,6 @@ This command does not push text to kill-ring'."
 (global-set-key (kbd "<C-backspace>") 'my/backward-delete-word)
 (global-set-key (kbd "M-;") 'comment-line)
 
-(add-hook 'python-mode-hook 'my/setup-ruff-formatting)
-
 (defun sardine/activate ()
   "Start a Sardine shell session and disable Python formatting and Flycheck."
   (interactive)
@@ -73,12 +41,18 @@ This command does not push text to kill-ring'."
     (setq
      python-shell-interpreter "sardine"
      python-shell-interpreter-args "")
-    (apply 'make-comint-in-buffer "Sardine" shell-buffer "sardine" nil nil)
+    (apply 'make-comint-in-buffer
+           "Sardine"
+           shell-buffer
+           "sardine"
+           nil
+           nil)
     (pop-to-buffer shell-buffer)
     (with-current-buffer prev-buffer
       (when (bound-and-true-p flycheck-mode)
         (flycheck-mode -1))
-      (remove-hook 'before-save-hook 'my/ruff-format-buffer t))
+      (when (bound-and-true-p apheleia-mode)
+        (apheleia-mode -1)))
     (pop-to-buffer prev-buffer)
     (message "Sardine activated: Formatting and Flycheck disabled.")))
 
@@ -88,7 +62,7 @@ This command does not push text to kill-ring'."
   (with-current-buffer (current-buffer)
     (when (derived-mode-p 'python-mode)
       (flycheck-mode 1)
-      (add-hook 'before-save-hook 'my/ruff-format-buffer nil t))
+      (apheleia-mode 1))
     (message "Sardine deactivated: Formatting and Flycheck re-enabled.")))
 
 (defun sardine/eval-block ()
@@ -115,8 +89,8 @@ If no region is selected, send the entire buffer."
           (message "Sardine code stopped"))
       (error "No Sardine process running"))))
 
-(global-set-key (kbd "C-<return>") #'sardine/eval-block)
-(global-set-key (kbd "C-.") #'sardine/stop-code)
+(global-set-key (kbd "C-<return>") 'sardine/eval-block)
+(global-set-key (kbd "C-.") 'sardine/stop-code)
 
 (defun my/kill-region-or-line ()
   (interactive)
@@ -124,15 +98,17 @@ If no region is selected, send the entire buffer."
       (kill-region (region-beginning) (region-end))
     (kill-whole-line)))
 
-(global-set-key (kbd "C-w") #'my/kill-region-or-line)
+(global-set-key (kbd "C-w") 'my/kill-region-or-line)
 
 (defun my/copy-region-or-line ()
   (interactive)
   (if (use-region-p)
       (kill-ring-save (region-beginning) (region-end))
-    (kill-ring-save (line-beginning-position) (line-beginning-position 2))))
+    (kill-ring-save
+     (line-beginning-position)
+     (line-beginning-position 2))))
 
-(global-set-key (kbd "M-w") #'my/copy-region-or-line)
+(global-set-key (kbd "M-w") 'my/copy-region-or-line)
 
 (provide 'functions)
 ;;; functions.el ends here

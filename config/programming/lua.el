@@ -6,9 +6,6 @@
   :config
   (setq lua-indent-level 2))
 
-(use-package apheleia
-  :hook (lua-mode . apheleia-mode))
-
 (with-eval-after-load 'lsp-mode
   ;; Disable lsp-mode's built-in Lua clients.
   (add-to-list 'lsp-disabled-clients 'lua-language-server)

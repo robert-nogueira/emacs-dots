@@ -22,11 +22,7 @@
   :hook ((typescript-mode . tide-setup)
          (tsx-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
-         (tsx-mode . tide-hl-identifier-mode)
-         (before-save . tide-format-before-save))
-  :config
-  (setq tide-format-options
-        '(:indentSize 2 :tabSize 2 :insertSpaceAfterCommaDelimiter t)))
+         (tsx-mode . tide-hl-identifier-mode)))
 
 (use-package lsp-tailwindcss
   :defer nil
@@ -42,13 +38,6 @@
 (use-package flycheck
   :defer nil
   :hook (after-init . global-flycheck-mode))
-
-(use-package prettier-js
-  :defer nil
-  :hook ((typescript-mode . prettier-js-mode)
-         (tsx-mode . prettier-js-mode)
-         (rjsx-mode . prettier-js-mode)
-         (web-mode . prettier-js-mode)))
 
 (use-package yasnippet
   :defer nil

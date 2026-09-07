@@ -1,7 +1,5 @@
 ;;; rust.el --- Rust Development Setup
 
-;;; Code:
-
 (when (and (treesit-available-p)
            (not (treesit-language-available-p 'rust)))
   (let ((treesit-language-source-alist
@@ -11,9 +9,6 @@
 (use-package rust-mode
   :ensure t
   :mode "\\.rs\\'"
-  :config
-  (setq rust-format-on-save t)
-  (setq rust-rustfmt-switches '("--edition" "2024"))
   :hook ((rust-mode . lsp-deferred)
          (rust-mode . my/rust-mode-setup)))
 
@@ -24,7 +19,10 @@
     (treesit-parser-create 'rust)
     (treesit-fold-mode 1)
     (treesit-fold-line-comment-mode 1)
-    (run-at-time 0 nil #'my/treesit-fold-close-doc-comments (current-buffer))))
+    (run-at-time
+     0 nil
+     #'my/treesit-fold-close-doc-comments
+     (current-buffer))))
 
 (defun my/treesit-fold-close-doc-comments (buf)
   "Fold all doc comment blocks in BUF."
@@ -32,16 +30,19 @@
     (with-current-buffer buf
       (when (and (bound-and-true-p treesit-fold-mode)
                  (treesit-parser-list))
-        (let ((nodes (treesit-query-capture
-                      (treesit-buffer-root-node)
-                      '((line_comment) @comment))))
+        (let ((nodes
+               (treesit-query-capture
+                (treesit-buffer-root-node)
+                '((line_comment) @comment))))
           (dolist (capture nodes)
             (let* ((node (cdr capture))
                    (prev (treesit-node-prev-sibling node)))
-              (unless (and prev (string= (treesit-node-type prev) "line_comment"))
+              (unless (and prev
+                           (string= (treesit-node-type prev) "line_comment"))
                 (save-excursion
                   (goto-char (treesit-node-start node))
-                  (ignore-errors (treesit-fold-close node)))))))))))
+                  (ignore-errors
+                    (treesit-fold-close node)))))))))))
 
 (use-package cargo
   :hook (rust-mode . cargo-minor-mode))
@@ -54,5 +55,4 @@
               ("C-c M-f" . treesit-fold-open-all)))
 
 (provide 'rust)
-
 ;;; rust.el ends here
