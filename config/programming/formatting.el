@@ -24,11 +24,19 @@
         'rustfmt-2024)
 
   ;; Lua
+  (setf (alist-get 'stylua-project apheleia-formatters)
+        '("apheleia-from-project-root"
+          "stylua.toml"
+          "stylua"
+          "--stdin-filepath"
+          filepath
+          "-"))
+
   (setf (alist-get 'lua-mode apheleia-mode-alist)
-        'stylua)
+        'stylua-project)
 
   (setf (alist-get 'lua-ts-mode apheleia-mode-alist)
-        'stylua)
+        'stylua-project)
 
   ;; JavaScript
   (setf (alist-get 'js-mode apheleia-mode-alist)
