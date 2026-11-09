@@ -42,7 +42,7 @@
         lsp-ui-sideline-show-hover nil
         lsp-ui-doc-delay 0.5
         lsp-ui-doc-max-height 70
-        lsp-ui-doc-border "#cba6f7"
+        lsp-ui-doc-border "#8D91E2"
         lsp-headerline-breadcrumb-enable-diagnostics nil)
 
   (define-key lsp-ui-mode-map

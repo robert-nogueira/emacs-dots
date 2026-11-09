@@ -50,9 +50,9 @@ to avoid the 'strange line' in TUI."
     ;; Note for me: get default background safely
     (let* ((maybe-bg (face-background 'default frame))
            (bg (if (and maybe-bg (stringp maybe-bg)) maybe-bg nil))
-           (fg "#cba6f7")
-           (unfg "#89b4fa")
-           (modfg "#f38ba8"))
+           (fg "#8D91E2")
+           (unfg "#8D91E2")
+           (modfg "#D4CCFF"))
       ;; Note for me: set header-line/tab-line to avoid strange line
       (set-face-attribute 'header-line frame :background bg :foreground fg)
       (set-face-attribute 'tab-line frame :background bg :foreground fg)

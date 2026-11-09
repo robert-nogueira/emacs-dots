@@ -112,11 +112,11 @@
   :hook (prog-mode . hl-todo-mode)
   :config
   (setq hl-todo-keyword-faces
-        '(("TODO"   . "#f38ba8")
-          ("FIXME"  . "#f38ba8")
-          ("DEBUG"  . "#cba6f7")
-          ("GOTCHA" . "#fab387")
-          ("STUB"   . "#89b4fa"))))
+        '(("TODO"   . "#D4CCFF")
+          ("FIXME"  . "#D4CCFF")
+          ("DEBUG"  . "#8D91E2")
+          ("GOTCHA" . "#D4CCFF")
+          ("STUB"   . "#8D91E2"))))
 
 (provide 'misc)
 ;;; misc.el ends here

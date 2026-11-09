@@ -61,7 +61,7 @@
   (add-hook 'after-init-hook #'my/dashboard-maybe-show)
 
   (set-face-attribute 'dashboard-banner-logo-title nil :height 180 :weight 'bold)
-  (set-face-foreground 'dashboard-banner-logo-title "#cba6f7"))
+  (set-face-foreground 'dashboard-banner-logo-title "#8D91E2"))
 
 (setq dashboard-projects-backend 'projectile)
 

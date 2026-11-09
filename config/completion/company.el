@@ -28,8 +28,8 @@
 
 (global-set-key (kbd "s-SPC") 'company-complete)
 
-(setq pos-tip-foreground-color "#89b4fa"
-      pos-tip-background-color "#11111b")
+(setq pos-tip-foreground-color "#8D91E2"
+      pos-tip-background-color "#121324")
 
 (define-key company-active-map [escape] 'company-abort)
 
